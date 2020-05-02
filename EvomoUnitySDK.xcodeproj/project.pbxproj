@@ -30,7 +30,6 @@
 		9BDA922B244F4DCA002A0382 /* EvomounityBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EvomounityBridge.m; sourceTree = "<group>"; };
 		9BDA922C244F4DCA002A0382 /* EvomounityBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvomounityBridge.h; sourceTree = "<group>"; };
 		9BDA9236244F9551002A0382 /* EvomoMotionAI.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = EvomoMotionAI.xcframework; path = Pods/EvomoMotionAI/Basic/EvomoMotionAI.xcframework; sourceTree = "<group>"; };
-		9BF7077A24503128009482B4 /* UnityHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnityHelper.m; sourceTree = "<group>"; };
 		BFC4A11470B943C7CEA7AF3A /* Pods-EvomoUnitySDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EvomoUnitySDK.debug.xcconfig"; path = "Target Support Files/Pods-EvomoUnitySDK/Pods-EvomoUnitySDK.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,7 +101,6 @@
 				9BDA9221244F4CEC002A0382 /* EvomoUnitySDK.h */,
 				9BDA9222244F4CEC002A0382 /* Info.plist */,
 				9BDA9229244F4D0C002A0382 /* EvomoSwiftHelper.swift */,
-				9BF7077A24503128009482B4 /* UnityHelper.m */,
 			);
 			path = EvomoUnitySDK;
 			sourceTree = "<group>";
