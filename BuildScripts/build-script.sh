@@ -21,7 +21,7 @@ git push --tags
 #### Instead create pod repo push -> add evomopod entry by ourself
 
 cd ${PROJECT_DIR}
-EVOMOPOD_PATH="../../swift/frameworks/evomoPodsRelease/${FRAMEWORK}/${TAG}"
+EVOMOPOD_PATH="../../../swift/frameworks/evomoPodsRelease/${FRAMEWORK}/${TAG}"
 
 echo "Copy podspec to repo manual: ${EVOMOPOD_PATH}"
 
