@@ -1,0 +1,69 @@
+PODS:
+  - Alamofire (4.9.1)
+  - AWSCore (2.13.1)
+  - AWSS3 (2.13.1):
+    - AWSCore (= 2.13.1)
+  - EvomoMotionAI/Basic (1.4.11):
+    - Alamofire (~> 4.0)
+    - AWSS3
+    - MessagePack.swift (~> 3.0.0)
+    - PromiseKit (~> 6.1)
+    - PromiseKit/WatchConnectivity (~> 6.1)
+    - SwiftyJSON (~> 5.0.0)
+    - themis (~> 0.12.2)
+  - GRKOpenSSLFramework (1.0.2.18)
+  - MessagePack.swift (3.0.1)
+  - PromiseKit (6.13.1):
+    - PromiseKit/CorePromise (= 6.13.1)
+    - PromiseKit/Foundation (= 6.13.1)
+    - PromiseKit/UIKit (= 6.13.1)
+  - PromiseKit/CorePromise (6.13.1)
+  - PromiseKit/Foundation (6.13.1):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (6.13.1):
+    - PromiseKit/CorePromise
+  - PromiseKit/WatchConnectivity (6.13.1):
+    - PromiseKit/CorePromise
+  - SwiftyJSON (5.0.0)
+  - themis (0.12.2):
+    - themis/themis-openssl (= 0.12.2)
+  - themis/themis-openssl (0.12.2):
+    - GRKOpenSSLFramework (= 1.0.2.18)
+    - themis/themis-openssl/core (= 0.12.2)
+    - themis/themis-openssl/objcwrapper (= 0.12.2)
+  - themis/themis-openssl/core (0.12.2):
+    - GRKOpenSSLFramework (= 1.0.2.18)
+  - themis/themis-openssl/objcwrapper (0.12.2):
+    - GRKOpenSSLFramework (= 1.0.2.18)
+    - themis/themis-openssl/core
+
+DEPENDENCIES:
+  - EvomoMotionAI/Basic
+
+SPEC REPOS:
+  https://bitbucket.org/evomo/evomopodsrelease:
+    - EvomoMotionAI
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - AWSCore
+    - AWSS3
+    - GRKOpenSSLFramework
+    - MessagePack.swift
+    - PromiseKit
+    - SwiftyJSON
+    - themis
+
+SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  AWSCore: ec394695d054fa4136b20ccd22d8901faea5de04
+  AWSS3: 03511ee2f0482f1674b864d7f6ceddc7184f8491
+  EvomoMotionAI: cca383c61d78d80e5293686660dc0f3db011ceb7
+  GRKOpenSSLFramework: 1d65e55d569af7b23074373041a92cc8bc768a92
+  MessagePack.swift: 3c5eec2a66cf3c8236cb416abb5d1a8a1b52f5a6
+  PromiseKit: 28fda91c973cc377875d8c0ea4f973013c05b6db
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  themis: f4ef6d942670146ad08dca8cc99a34ae040878c0
+
+PODFILE CHECKSUM: eb0c97105fcee31899c3184ca6f908bae137b428
+
+COCOAPODS: 1.9.1
