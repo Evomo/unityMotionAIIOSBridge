@@ -16,6 +16,7 @@ podspec-bump -i ${TAG} -w
 git add -A && git commit -m "Release ${TAG}."
 git tag "${TAG}"
 git push --tags
+git push
 
 #Thrid part: Create pod repo push
 #### Instead create pod repo push -> add evomopod entry by ourself
