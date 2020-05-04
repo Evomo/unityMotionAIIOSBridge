@@ -19,7 +19,7 @@
 
 /* Begin PBXFileReference section */
 		31E91B72245CC604004FD02C /* EvomoUnitySDK.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; fileEncoding = 4; path = EvomoUnitySDK.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		31E91B74245D8A0A004FD02C /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.yaml; };
+		31E91B74245D8A0A004FD02C /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		31E91B76245D8AE6004FD02C /* build-script.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "build-script.sh"; sourceTree = "<group>"; };
 		669F3F5DC577BCB57584D635 /* Pods-EvomoUnitySDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EvomoUnitySDK.release.xcconfig"; path = "Target Support Files/Pods-EvomoUnitySDK/Pods-EvomoUnitySDK.release.xcconfig"; sourceTree = "<group>"; };
 		85518E5D3B0358DA426A9A71 /* Pods_EvomoUnitySDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EvomoUnitySDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
