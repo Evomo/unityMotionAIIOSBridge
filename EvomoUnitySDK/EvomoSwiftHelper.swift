@@ -10,7 +10,7 @@ import Foundation
 import EvomoMotionAI
 
 let deviceIphone = Device(deviceID: "", deviceType: .iPhone, devicePosition: .hand,
-                          deviceOrientation: .buttonDown, classificationModel: "2102")
+                          deviceOrientation: .buttonDown, classificationModel: "2115")
 
 let licenseID = "800ff7ea-521b-4d5f-b1f9-c04e90d665fa"
 
@@ -71,12 +71,12 @@ let licenseID = "800ff7ea-521b-4d5f-b1f9-c04e90d665fa"
         ClassificationControlLayer.shared.gaming = true
         
         // only used to load model on init
-        ClassificationControlLayer.shared.setLicense(licenseID: licenseID)
-        ClassificationControlLayer.shared.getAvailableMovements(device: deviceIphone).done{ mTypes in
-            print("Evomo - getAvailableMovements", mTypes)
-        }.catch{ error in
-            print("Evomo - getAvailableMovements", error)
-        }
+//        ClassificationControlLayer.shared.setLicense(licenseID: licenseID)
+//        ClassificationControlLayer.shared.getAvailableMovements(device: deviceIphone).done{ mTypes in
+//            print("Evomo - getAvailableMovements", mTypes)
+//        }.catch{ error in
+//            print("Evomo - getAvailableMovements", error)
+//        }
         
     }
     
