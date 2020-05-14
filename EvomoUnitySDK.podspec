@@ -3,7 +3,7 @@
 Pod::Spec.new do |spec|
     
     spec.name         = "EvomoUnitySDK"
-    spec.version      = "1.0.8"
+    spec.version      = "1.0.9"
     spec.summary      = "Unity Bridge for the Evomo MotionAI SDK."
     
     spec.description  = <<-DESC
@@ -31,17 +31,21 @@ Pod::Spec.new do |spec|
     
     spec.source       = { :git => "https://github.com/Evomo/unityMotionAIIOSBridge.git", :tag => "#{spec.version}" }
     
-    s.subspec 'Source' do |source| {
+    s.subspec 'Source' do |source|
     
         source.source_files  = "EvomoUnitySDK/*.{h,m,swift}"
         
         source.dependency 'EvomoMotionAI/Basic'
-    }
     
-    s.subspec 'Movesense' do |movesense| {
+    end
+    
+    s.subspec 'Movesense' do |movesense|
+        
         movesense.source_files  = "EvomoUnitySDKMovesense/*.{h,m,swift}"
         
         movesense.dependency 'EvomoMotionAI/Movesense'
-    }
+        
+    end
+    
     
 end
