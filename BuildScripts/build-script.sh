@@ -8,6 +8,7 @@ PROJECT_DIR=$(pwd)
 # pump Tag/Version
 podspec-bump -i ${TAG} -w
 /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString ${TAG}" "${PROJECT_DIR}/${FRAMEWORK}/Info.plist"
+/usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString ${TAG}" "${PROJECT_DIR}/${FRAMEWORK}Movesense/Info.plist"
 
 ## lint and push pod to repo
 # pod repo push bitbucket-evomopods ${FRAMEWORK}.podspec --allow-warnings

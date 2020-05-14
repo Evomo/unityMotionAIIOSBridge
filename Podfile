@@ -15,3 +15,12 @@ target 'EvomoUnitySDK' do
 
   # Pods for EvomoUnitySDK
 end
+
+target 'EvomoUnitySDKMovesense' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+  
+  pod "EvomoMotionAI/Movesense"
+
+  # Pods for EvomoUnitySDK
+end
