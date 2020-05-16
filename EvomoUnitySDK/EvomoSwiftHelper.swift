@@ -12,11 +12,16 @@ import EvomoMotionAI
 let deviceIphone = Device(deviceID: "", deviceType: .iPhone, devicePosition: .hand,
                           deviceOrientation: .buttonDown, classificationModel: "2115")
 
-let licenseID = "800ff7ea-521b-4d5f-b1f9-c04e90d665fa"
+//let licenseID = "800ff7ea-521b-4d5f-b1f9-c04e90d665fa"
 
 @objc public class EvomoSwiftHelper: NSObject {
-    
-    @objc public static func initEvomo(unityBridge : EvomounityBridge) {
+        
+    @objc public static func initEvomo(unityBridge : EvomounityBridge, licenseID: String) {
+        
+        // set licenseID
+        ClassificationControlLayer.shared.setLicense(licenseID: licenseID)
+        
+        // optional inpug: debugging
         
         let unityBridge: EvomounityBridge = EvomounityBridge()
         
@@ -87,7 +92,7 @@ let licenseID = "800ff7ea-521b-4d5f-b1f9-c04e90d665fa"
                   // Start
                   ClassificationControlLayer.shared.start(
                       devices: [deviceIphone],
-                      licenseID: licenseID,
+                      licenseID: nil,
                       isStarted: {
                           print("Evomo - Started!")
                           

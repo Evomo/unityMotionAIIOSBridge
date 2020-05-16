@@ -15,7 +15,8 @@
 
 typedef void (*UnityCallback)(int data);
 
-- (void) Init: (UnityCallback) callback;
+- (void) Init: (UnityCallback) callback licenseID: (NSString *) licenseID;
+- (void) Init: (NSString *) licenseID;
 
 - (void) Start;
 - (void) Stop;

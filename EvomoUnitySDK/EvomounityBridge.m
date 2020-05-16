@@ -18,10 +18,14 @@
 
 static UnityCallback _callback;
 
-- (void) Init: (UnityCallback) callback {
+- (void) Init: (UnityCallback) callback licenseID: (NSString *) licenseID {
     _callback = callback;
-  [EvomoSwiftHelper initEvomoWithUnityBridge:self];
+  [EvomoSwiftHelper initEvomoWithUnityBridge:self licenseID:licenseID];
     [self Ready];
+}
+
+- (void) Init: (NSString *) licenseID {
+  [EvomoSwiftHelper initEvomoWithUnityBridge:self licenseID:licenseID];
 }
 
 - (void) Start {
