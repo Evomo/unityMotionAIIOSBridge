@@ -28,6 +28,43 @@ static UnityCallback _callback;
   [EvomoSwiftHelper startEvomo];
 }
 
+- (void) LogEvent: (NSString *)eventType note: (NSString *)note {
+    [EvomoSwiftHelper logEventWithEventType:eventType note:note];
+}
+
+- (void) LogEvent: (NSString *)eventType {
+    [EvomoSwiftHelper logEventWithEventType:eventType note:nil];
+}
+
+- (void) LogTargetMovement: (NSString *)movementType {
+    [EvomoSwiftHelper logTargetMovementWithMovementType:movementType note:nil];
+}
+
+- (void) LogTargetMovement: (NSString *)movementType  note: (NSString *)note {
+    [EvomoSwiftHelper logTargetMovementWithMovementType:movementType note:note];
+}
+
+- (void) LogFailure:(NSString *) source
+        failureType: (NSString *) failureType
+       movementType: (NSString *) movementType
+               note: (NSString *) note {
+    
+    [EvomoSwiftHelper logFailureWithSource:source
+                               failureType:failureType
+                              movementType:movementType
+                                      note:note];
+}
+
+- (void) LogFailure:(NSString *) source
+        failureType: (NSString *) failureType
+       movementType: (NSString *) movementType {
+    
+    [EvomoSwiftHelper logFailureWithSource:source
+                               failureType:failureType
+                              movementType:movementType
+                                      note: nil];
+}
+
 - (void) Stop {
   [EvomoSwiftHelper stopEvomo];
 }

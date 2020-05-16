@@ -18,9 +18,22 @@ typedef void (*UnityCallback)(int data);
 - (void) Init: (UnityCallback) callback;
 
 - (void) Start;
-
 - (void) Stop;
 
+- (void) LogEvent: (NSString *)eventType note: (NSString *) note;
+- (void) LogEvent: (NSString *)eventType;
+
+- (void) LogTargetMovement: (NSString *)eventType;
+- (void) LogTargetMovement: (NSString *)eventType note: (NSString *) note;
+
+- (void) LogFailure:(NSString *) source
+        failureType: (NSString *) failureType
+       movementType: (NSString *) movementType
+               note: (NSString *) note;
+
+- (void) LogFailure:(NSString *) source
+        failureType: (NSString *) failureType
+       movementType: (NSString *) movementType;
 
 - (void) Ready;
 - (void) Jump;

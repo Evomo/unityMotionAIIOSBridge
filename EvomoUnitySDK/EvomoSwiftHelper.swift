@@ -97,7 +97,38 @@ let licenseID = "800ff7ea-521b-4d5f-b1f9-c04e90d665fa"
        }
     
     @objc public static func stopEvomo() {
-        ClassificationControlLayer.shared.stop()
+        _ = ClassificationControlLayer.shared.stop()
     }
+    
+    @objc public static func logEvent(eventType: String, note: String?) {
+        ClassificationControlLayer.shared.logEvent(eventType: eventType, note: eventType)
+    }
+    
+    @objc public static func logTargetMovement(movementType: String, note: String?) {
+        ClassificationControlLayer.shared.logTargetMovement(movementType: movementType, note: nil)
+    }
+    
+    @objc public static func logFailure(source: String, failureType: String, movementType: String, note: String?) {
+        
+        let sourceEnum: FailureSource
+        switch source {
+        case "app":
+            sourceEnum = .app
+        default:
+            sourceEnum = .manual
+        }
+        
+        let failureTypeEnum: FailureType
+        switch failureType {
+        case "toLess":
+            failureTypeEnum = .toLess
+        default:
+            failureTypeEnum = .toMuch
+        }
+        
+        ClassificationControlLayer.shared.logFailure(source: sourceEnum, failureType: failureTypeEnum, movementType: movementType, note: note)
+    }
+    
+    
 }
 
