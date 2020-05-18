@@ -24,24 +24,12 @@ static UnityCallback _callback;
     [self Ready];
 }
 
-- (void) Init: (NSString *) licenseID {
-  [EvomoSwiftHelper initEvomoWithUnityBridge:self licenseID:licenseID];
-}
-
-- (void) Start {
-  [EvomoSwiftHelper startEvomo];
+- (void) Start: (NSString *) deviceOrientation classificationModel: (NSString *) classificationModel {
+    [EvomoSwiftHelper startEvomoWithDeviceOrientation:deviceOrientation classificationModel:classificationModel];
 }
 
 - (void) LogEvent: (NSString *)eventType note: (NSString *)note {
     [EvomoSwiftHelper logEventWithEventType:eventType note:note];
-}
-
-- (void) LogEvent: (NSString *)eventType {
-    [EvomoSwiftHelper logEventWithEventType:eventType note:nil];
-}
-
-- (void) LogTargetMovement: (NSString *)movementType {
-    [EvomoSwiftHelper logTargetMovementWithMovementType:movementType note:nil];
 }
 
 - (void) LogTargetMovement: (NSString *)movementType  note: (NSString *)note {
@@ -57,16 +45,6 @@ static UnityCallback _callback;
                                failureType:failureType
                               movementType:movementType
                                       note:note];
-}
-
-- (void) LogFailure:(NSString *) source
-        failureType: (NSString *) failureType
-       movementType: (NSString *) movementType {
-    
-    [EvomoSwiftHelper logFailureWithSource:source
-                               failureType:failureType
-                              movementType:movementType
-                                      note: nil];
 }
 
 - (void) Stop {

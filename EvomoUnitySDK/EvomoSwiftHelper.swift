@@ -75,19 +75,21 @@ let deviceIphone = Device(deviceID: "", deviceType: .iPhone, devicePosition: .ha
         ClassificationControlLayer.shared.debugging = true
         ClassificationControlLayer.shared.gaming = true
         
-        // only used to load model on init
-//        ClassificationControlLayer.shared.setLicense(licenseID: licenseID)
-//        ClassificationControlLayer.shared.getAvailableMovements(device: deviceIphone).done{ mTypes in
-//            print("Evomo - getAvailableMovements", mTypes)
-//        }.catch{ error in
-//            print("Evomo - getAvailableMovements", error)
-//        }
-        
     }
     
-    @objc public static func startEvomo() {
+    @objc public static func startEvomo(deviceOrientation: String, classificationModel: String) {
+        
+        // Convert deviceOrientation string to enum
+        var devOrientation = DeviceOrientation(rawValue: deviceOrientation)
+        if devOrientation == nil {
+            devOrientation = .buttonDown
+            print("Warning: Conversion of device orientation \(deviceOrientation) failed! Set to default of buttonDown")
+        }
+        
         // Define device
-                                      
+        let deviceIphone = Device(deviceID: "", deviceType: .iPhone, devicePosition: .hand,
+                                  deviceOrientation: devOrientation!, classificationModel: classificationModel)
+            
             print("Start classification")
                   // Start
                   ClassificationControlLayer.shared.start(

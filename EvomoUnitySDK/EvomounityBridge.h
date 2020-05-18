@@ -16,25 +16,19 @@
 typedef void (*UnityCallback)(int data);
 
 - (void) Init: (UnityCallback) callback licenseID: (NSString *) licenseID;
-- (void) Init: (NSString *) licenseID;
 
-- (void) Start;
+- (void) Start: (NSString *) deviceOrientation classificationModel: (NSString *) classificationModel;
 - (void) Stop;
 
-- (void) LogEvent: (NSString *)eventType note: (NSString *) note;
-- (void) LogEvent: (NSString *)eventType;
+- (void) LogEvent: (NSString *) eventType note: (NSString *) note;
 
-- (void) LogTargetMovement: (NSString *)eventType;
-- (void) LogTargetMovement: (NSString *)eventType note: (NSString *) note;
+- (void) LogTargetMovement: (NSString *) eventType note: (NSString *) note;
 
 - (void) LogFailure:(NSString *) source
         failureType: (NSString *) failureType
        movementType: (NSString *) movementType
                note: (NSString *) note;
 
-- (void) LogFailure:(NSString *) source
-        failureType: (NSString *) failureType
-       movementType: (NSString *) movementType;
 
 - (void) Ready;
 - (void) Jump;
