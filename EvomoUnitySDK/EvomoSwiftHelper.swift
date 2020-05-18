@@ -80,28 +80,35 @@ let deviceIphone = Device(deviceID: "", deviceType: .iPhone, devicePosition: .ha
     @objc public static func startEvomo(deviceOrientation: String, classificationModel: String) {
         
         // Convert deviceOrientation string to enum
-        var devOrientation = DeviceOrientation(rawValue: deviceOrientation)
-        if devOrientation == nil {
+        let devOrientation: DeviceOrientation
+        switch deviceOrientation {
+        case "buttonRight":
+            devOrientation = .buttonRight
+        case "buttonLeft":
+            devOrientation = .buttonLeft
+        case "buttonDown":
+            devOrientation = .buttonDown
+        default:
             devOrientation = .buttonDown
             print("Warning: Conversion of device orientation \(deviceOrientation) failed! Set to default of buttonDown")
         }
         
+        
         // Define device
         let deviceIphone = Device(deviceID: "", deviceType: .iPhone, devicePosition: .hand,
-                                  deviceOrientation: devOrientation!, classificationModel: classificationModel)
-            
-            print("Start classification")
-                  // Start
-                  ClassificationControlLayer.shared.start(
-                      devices: [deviceIphone],
-                      licenseID: nil,
-                      isStarted: {
-                          print("Evomo - Started!")
-                          
-                  },
-                      isFailed: {error in print("Evomo - startClassification:  \(error)")}
-                  )
-       }
+                                  deviceOrientation: devOrientation, classificationModel: classificationModel)
+        
+        // Start
+        ClassificationControlLayer.shared.start(
+            devices: [deviceIphone],
+            licenseID: nil,
+            isStarted: {
+                print("Evomo - Started!")
+                
+        },
+            isFailed: {error in print("Evomo - startClassification:  \(error)")}
+        )
+    }
     
     @objc public static func stopEvomo() {
         _ = ClassificationControlLayer.shared.stop()
@@ -138,4 +145,3 @@ let deviceIphone = Device(deviceID: "", deviceType: .iPhone, devicePosition: .ha
     
     
 }
-
