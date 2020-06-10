@@ -142,5 +142,9 @@ import EvomoMotionAI
         ClassificationControlLayer.shared.logFailure(source: sourceEnum, failureType: failureTypeEnum, movementType: movementType, note: note)
     }
     
+    @objc public static func setUsername(_ username: String) {
+        ClassificationControlLayer.shared.setUsername(username)
+    }
+    
     
 }

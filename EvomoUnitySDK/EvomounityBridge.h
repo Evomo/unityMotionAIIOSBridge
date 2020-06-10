@@ -29,6 +29,8 @@ typedef void (*UnityCallback)(int data);
        movementType: (NSString *) movementType
                note: (NSString *) note;
 
+- (void) SetUsername: (NSString *) username;
+
 
 - (void) Ready;
 - (void) Jump;

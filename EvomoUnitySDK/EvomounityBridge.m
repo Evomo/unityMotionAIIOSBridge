@@ -36,7 +36,7 @@ static UnityCallback _callback;
     [EvomoSwiftHelper logTargetMovementWithMovementType:movementType note:note];
 }
 
-- (void) LogFailure:(NSString *) source
+- (void) LogFailure: (NSString *) source
         failureType: (NSString *) failureType
        movementType: (NSString *) movementType
                note: (NSString *) note {
@@ -45,6 +45,10 @@ static UnityCallback _callback;
                                failureType:failureType
                               movementType:movementType
                                       note:note];
+}
+
+- (void) SetUsername: (NSString *) username {
+    [EvomoSwiftHelper setUsername:username];
 }
 
 - (void) Stop {
