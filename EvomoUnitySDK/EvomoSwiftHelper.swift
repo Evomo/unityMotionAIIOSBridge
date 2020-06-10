@@ -9,9 +9,6 @@
 import Foundation
 import EvomoMotionAI
 
-let deviceIphone = Device(deviceID: "", deviceType: .iPhone, devicePosition: .hand,
-                          deviceOrientation: .buttonDown, classificationModel: "2115")
-
 //let licenseID = "800ff7ea-521b-4d5f-b1f9-c04e90d665fa"
 
 @objc public class EvomoSwiftHelper: NSObject {
@@ -73,8 +70,10 @@ let deviceIphone = Device(deviceID: "", deviceType: .iPhone, devicePosition: .ha
         
         
         ClassificationControlLayer.shared.debugging = true
-        ClassificationControlLayer.shared.gaming = true
         
+        ClassificationControlLayer.shared.setupLogging(logLevel: .debug)
+        
+        ClassificationControlLayer.shared.gaming = true
     }
     
     @objc public static func startEvomo(deviceOrientation: String, classificationModel: String) {
