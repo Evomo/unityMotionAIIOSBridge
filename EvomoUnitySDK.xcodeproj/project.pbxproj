@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		312CC8AC2497929D001344CA /* EvomoUnitySDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312CC8AB2497929D001344CA /* EvomoUnitySDKTests.swift */; };
+		312CC8AE2497929D001344CA /* EvomoUnitySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BDA921E244F4CEC002A0382 /* EvomoUnitySDK.framework */; platformFilter = ios; };
+		312CC8B4249792EE001344CA /* EvomoSwiftHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDA9229244F4D0C002A0382 /* EvomoSwiftHelper.swift */; };
 		3163291E246CBBA200FFAFC1 /* EvomoMotionAI.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BDA9236244F9551002A0382 /* EvomoMotionAI.xcframework */; };
 		31632922246CBBA200FFAFC1 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 31E91B74245D8A0A004FD02C /* Podfile */; };
 		31632923246CBBA200FFAFC1 /* EvomoUnitySDK.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 31E91B72245CC604004FD02C /* EvomoUnitySDK.podspec */; };
@@ -16,19 +19,32 @@
 		3163292C246CBC2300FFAFC1 /* EvomoUnitySDKMovesense.h in Headers */ = {isa = PBXBuildFile; fileRef = 3163290C246CB1CF00FFAFC1 /* EvomoUnitySDKMovesense.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		31E91B73245CC604004FD02C /* EvomoUnitySDK.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 31E91B72245CC604004FD02C /* EvomoUnitySDK.podspec */; };
 		31E91B75245D8A0A004FD02C /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 31E91B74245D8A0A004FD02C /* Podfile */; };
-		7C984F8A1DFE3037B96CB1F5 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		7C984F8A1DFE3037B96CB1F5 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		86365D3840E96E02CD2F5CA0 /* Pods_EvomoUnitySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 105E4B99608CB9CE4B10E258 /* Pods_EvomoUnitySDK.framework */; };
 		9BDA9223244F4CEC002A0382 /* EvomoUnitySDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BDA9221244F4CEC002A0382 /* EvomoUnitySDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9BDA922A244F4D0C002A0382 /* EvomoSwiftHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDA9229244F4D0C002A0382 /* EvomoSwiftHelper.swift */; };
 		9BDA922D244F4DCA002A0382 /* EvomounityBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BDA922B244F4DCA002A0382 /* EvomounityBridge.m */; };
 		9BDA922E244F4DCA002A0382 /* EvomounityBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BDA922C244F4DCA002A0382 /* EvomounityBridge.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9BDA9233244F94C5002A0382 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		9BDA9233244F94C5002A0382 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		9BDA9237244F9551002A0382 /* EvomoMotionAI.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BDA9236244F9551002A0382 /* EvomoMotionAI.xcframework */; };
 		DEED58661F3991C3A4A96467 /* Pods_EvomoUnitySDKMovesense.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E32C7A1BE321A6AF37FD53BF /* Pods_EvomoUnitySDKMovesense.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		312CC8AF2497929D001344CA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9BDA9215244F4CEC002A0382 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9BDA921D244F4CEC002A0382;
+			remoteInfo = EvomoUnitySDK;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		105E4B99608CB9CE4B10E258 /* Pods_EvomoUnitySDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EvomoUnitySDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		312CC8A92497929D001344CA /* EvomoUnitySDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EvomoUnitySDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		312CC8AB2497929D001344CA /* EvomoUnitySDKTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvomoUnitySDKTests.swift; sourceTree = "<group>"; };
+		312CC8AD2497929D001344CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3163290B246CB1CF00FFAFC1 /* EvomoSwiftHelperMovesense.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvomoSwiftHelperMovesense.swift; sourceTree = "<group>"; };
 		3163290C246CB1CF00FFAFC1 /* EvomoUnitySDKMovesense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvomoUnitySDKMovesense.h; sourceTree = "<group>"; };
 		3163290D246CB1CF00FFAFC1 /* EvomounityBridgeMovesense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvomounityBridgeMovesense.h; sourceTree = "<group>"; };
@@ -54,6 +70,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		312CC8A62497929D001344CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				312CC8AE2497929D001344CA /* EvomoUnitySDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3163291D246CBBA200FFAFC1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -68,8 +92,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9BDA9237244F9551002A0382 /* EvomoMotionAI.xcframework in Frameworks */,
-				9BDA9233244F94C5002A0382 /* BuildFile in Frameworks */,
-				7C984F8A1DFE3037B96CB1F5 /* BuildFile in Frameworks */,
+				9BDA9233244F94C5002A0382 /* (null) in Frameworks */,
+				7C984F8A1DFE3037B96CB1F5 /* (null) in Frameworks */,
 				86365D3840E96E02CD2F5CA0 /* Pods_EvomoUnitySDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -77,6 +101,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		312CC8AA2497929D001344CA /* EvomoUnitySDKTests */ = {
+			isa = PBXGroup;
+			children = (
+				312CC8AB2497929D001344CA /* EvomoUnitySDKTests.swift */,
+				312CC8AD2497929D001344CA /* Info.plist */,
+			);
+			path = EvomoUnitySDKTests;
+			sourceTree = "<group>";
+		};
 		3163290A246CB17000FFAFC1 /* EvomoUnitySDKMovesense */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +159,7 @@
 				31E91B72245CC604004FD02C /* EvomoUnitySDK.podspec */,
 				9BDA9220244F4CEC002A0382 /* EvomoUnitySDK */,
 				3163290A246CB17000FFAFC1 /* EvomoUnitySDKMovesense */,
+				312CC8AA2497929D001344CA /* EvomoUnitySDKTests */,
 				9BDA921F244F4CEC002A0382 /* Products */,
 				55BD13E094859EFB48BAF578 /* Pods */,
 				40A267E08722B0C512025379 /* Frameworks */,
@@ -138,6 +172,7 @@
 			children = (
 				9BDA921E244F4CEC002A0382 /* EvomoUnitySDK.framework */,
 				31632927246CBBA200FFAFC1 /* EvomoUnitySDKMovesense.framework */,
+				312CC8A92497929D001344CA /* EvomoUnitySDKTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -178,6 +213,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		312CC8A82497929D001344CA /* EvomoUnitySDKTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 312CC8B32497929D001344CA /* Build configuration list for PBXNativeTarget "EvomoUnitySDKTests" */;
+			buildPhases = (
+				312CC8A52497929D001344CA /* Sources */,
+				312CC8A62497929D001344CA /* Frameworks */,
+				312CC8A72497929D001344CA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				312CC8B02497929D001344CA /* PBXTargetDependency */,
+			);
+			name = EvomoUnitySDKTests;
+			productName = EvomoUnitySDKTests;
+			productReference = 312CC8A92497929D001344CA /* EvomoUnitySDKTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		31632915246CBBA200FFAFC1 /* EvomoUnitySDKMovesense */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 31632924246CBBA200FFAFC1 /* Build configuration list for PBXNativeTarget "EvomoUnitySDKMovesense" */;
@@ -222,9 +275,13 @@
 		9BDA9215244F4CEC002A0382 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1150;
 				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = evomo;
 				TargetAttributes = {
+					312CC8A82497929D001344CA = {
+						CreatedOnToolsVersion = 11.5;
+					};
 					9BDA921D244F4CEC002A0382 = {
 						CreatedOnToolsVersion = 11.4;
 						LastSwiftMigration = 1140;
@@ -246,11 +303,19 @@
 			targets = (
 				9BDA921D244F4CEC002A0382 /* EvomoUnitySDK */,
 				31632915246CBBA200FFAFC1 /* EvomoUnitySDKMovesense */,
+				312CC8A82497929D001344CA /* EvomoUnitySDKTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		312CC8A72497929D001344CA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		31632921246CBBA200FFAFC1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -319,6 +384,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		312CC8A52497929D001344CA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				312CC8B4249792EE001344CA /* EvomoSwiftHelper.swift in Sources */,
+				312CC8AC2497929D001344CA /* EvomoUnitySDKTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3163291A246CBBA200FFAFC1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -339,7 +413,58 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		312CC8B02497929D001344CA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = 9BDA921D244F4CEC002A0382 /* EvomoUnitySDK */;
+			targetProxy = 312CC8AF2497929D001344CA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		312CC8B12497929D001344CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8298DX3KDW;
+				INFOPLIST_FILE = EvomoUnitySDKTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = evomo.EvomoUnitySDKTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		312CC8B22497929D001344CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8298DX3KDW;
+				INFOPLIST_FILE = EvomoUnitySDKTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = evomo.EvomoUnitySDKTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		31632925246CBBA200FFAFC1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F9715C51C8F3915D298CE405 /* Pods-EvomoUnitySDKMovesense.debug.xcconfig */;
@@ -585,6 +710,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		312CC8B32497929D001344CA /* Build configuration list for PBXNativeTarget "EvomoUnitySDKTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				312CC8B12497929D001344CA /* Debug */,
+				312CC8B22497929D001344CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		31632924246CBBA200FFAFC1 /* Build configuration list for PBXNativeTarget "EvomoUnitySDKMovesense" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
