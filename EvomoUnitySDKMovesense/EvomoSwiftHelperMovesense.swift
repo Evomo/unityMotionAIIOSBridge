@@ -28,7 +28,7 @@ let licenseID = "800ff7ea-521b-4d5f-b1f9-c04e90d665fa"
             DispatchQueue.main.async {
                 // execute movement event in main thread
                 if !elementalMovement.rejected {
-                    print("EvomoMovement: \(elementalMovement.typeLabel)")
+//                    print("EvomoMovement: \(elementalMovement.typeLabel)")
                     
                     switch(elementalMovement.typeLabel) {
                     case "hop_single_up":

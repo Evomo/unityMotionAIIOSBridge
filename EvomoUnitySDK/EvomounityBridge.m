@@ -16,12 +16,15 @@
 
 @implementation EvomounityBridge
 
-static UnityCallback _callback;
+static ReadyCallback _readyCallback;
+static StoppedCallback _stoppedCallback;
+static ElmoCallback _elmoCallback;
+static MovementCallback _movementCallback;
 
-- (void) Init: (UnityCallback) callback licenseID: (NSString *) licenseID {
-    _callback = callback;
-  [EvomoSwiftHelper initEvomoWithUnityBridge:self licenseID:licenseID];
-    [self Ready];
+- (void) Init: (ReadyCallback) callback licenseID: (NSString *) licenseID debugging: (Boolean) debugging {
+    _readyCallback = callback;
+    [EvomoSwiftHelper initEvomoWithUnityBridge:self licenseID:licenseID debugging:debugging];
+//    [self Ready];
 }
 
 - (void) Start: (NSString *) deviceOrientation classificationModel: (NSString *) classificationModel {
@@ -55,24 +58,20 @@ static UnityCallback _callback;
   [EvomoSwiftHelper stopEvomo];
 }
 
-- (void) Ready {
-    _callback(0);
+- (void) SendReadySiganl {
+    _readyCallback();
 }
 
-- (void) Jump {
-    _callback(1);
+- (void) SendStoppedSignal {
+    _stoppedCallback();
 }
 
-- (void) Duck {
-    _callback(2);
+- (void) SendElmo: (NSString *) elmoStr {
+    _elmoCallback(elmoStr);
 }
 
-- (void) Left {
-    _callback(3);
-}
-
-- (void) Right {
-    _callback(4);
+- (void) SendMovement: (NSString *) movementStr {
+    _movementCallback(movementStr);
 }
 
 @end

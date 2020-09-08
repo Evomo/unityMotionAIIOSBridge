@@ -13,30 +13,36 @@
 
 @interface EvomounityBridge : NSObject
 
-typedef void (*UnityCallback)(int data);
+typedef void (*ReadyCallback)(void);
+typedef void (*StoppedCallback)(void);
+typedef void (*ElmoCallback)(NSString * data);
+typedef void (*MovementCallback)(NSString * data);
 
-- (void) Init: (UnityCallback) callback licenseID: (NSString *) licenseID;
+
+- (void) Init: (ReadyCallback) callback licenseID: (NSString *) licenseID debugging: (Boolean) debugging;
+
+- (void) SubscribeElmos: (ElmoCallback) callback;
+
+- (void) SubscribeMovements: (MovementCallback) callback;
 
 - (void) Start: (NSString *) deviceOrientation classificationModel: (NSString *) classificationModel;
 - (void) Stop;
+// Add callback to stop for uploading debugging data
 
 - (void) LogEvent: (NSString *) eventType note: (NSString *) note;
 
 - (void) LogTargetMovement: (NSString *) eventType note: (NSString *) note;
 
-- (void) LogFailure:(NSString *) source
+- (void) LogFailure: (NSString *) source
         failureType: (NSString *) failureType
        movementType: (NSString *) movementType
                note: (NSString *) note;
 
 - (void) SetUsername: (NSString *) username;
 
-
 - (void) Ready;
-- (void) Jump;
-- (void) Duck;
-- (void) Left;
-- (void) Right;
+- (void) SendElmo: (NSString *) elmoStr;
+- (void) SendMovement: (NSString *) movementStr;
 
 @end
 #endif /* EvomounityBridge_h */

@@ -8,73 +8,49 @@
 
 import Foundation
 import EvomoMotionAI
+import SwiftyJSON
 
 //let licenseID = "800ff7ea-521b-4d5f-b1f9-c04e90d665fa"
 
 @objc public class EvomoSwiftHelper: NSObject {
         
-    @objc public static func initEvomo(unityBridge : EvomounityBridge, licenseID: String) {
+    @objc public static func initEvomo(unityBridge : EvomounityBridge, licenseID: String, debugging: Bool = true) {
         
         // set licenseID
         ClassificationControlLayer.shared.setLicense(licenseID: licenseID)
         
-        // optional inpug: debugging
+        // optional input: debugging
+        ClassificationControlLayer.shared.debugging = debugging
+        if debugging {
+            ClassificationControlLayer.shared.setupLogging(logLevel: .debug)
+        }
+    }
+    
+    @objc public static func subcribeElmos(unityBridge : EvomounityBridge) {
+        
+        ClassificationControlLayer.shared.gaming = true
         
         let unityBridge: EvomounityBridge = EvomounityBridge()
         
-        var lastElmo: ElementalMovement? = nil
-        
         ClassificationControlLayer.shared.elementalMovementHandler = { elementalMovement in
-            // Will be executed every time a elementalMovement was classified
+            // Send elmo to unity
             
-            DispatchQueue.main.async {
-                // execute movement event in main thread
-                if !elementalMovement.rejected {
-                    print("EvomoMovement: \(elementalMovement.typeLabel)")
-                    
-                    switch(elementalMovement.typeLabel) {
-                    case "hop_single_up":
-                        unityBridge.jump()
-                    case "duck down":
-                        unityBridge.duck()
-                    case "side_step_left_up":
-                        unityBridge.left()
-                    case "side_step_right_up":
-                        unityBridge.right()
-                    default:
-                        print("default")
-                    }
-                    
-                    // rescue rejected elmo
-                    if let lastElmo = lastElmo {
-                        if lastElmo.rejected == true && elementalMovement.rejected == false {
-                            if lastElmo.typeLabel == "duck down" && elementalMovement.typeLabel == "duck up"  {
-                                // rescue hop
-                                unityBridge.duck()
-                            } else if lastElmo.typeLabel == "hop_single_up" && elementalMovement.typeLabel == "hop_single_down"  {
-                                // rescue hop
-                                unityBridge.jump()
-                            } else if lastElmo.typeLabel == "side_step_left_up" && elementalMovement.typeLabel == "side_step_left_down"  {
-                                // rescue hop
-                                unityBridge.left()
-                            } else if lastElmo.typeLabel == "side_step_right_up" && elementalMovement.typeLabel == "side_step_right_down"  {
-                                // rescue hop
-                                unityBridge.right()
-                            }
-                        }
-                    }
-                }
-            }
-            lastElmo = elementalMovement
+            unityBridge.sendElmo(JSON(elementalMovement.serializeCompact()).rawString())
         }
-        
-        
-        ClassificationControlLayer.shared.debugging = true
-        
-        ClassificationControlLayer.shared.setupLogging(logLevel: .debug)
-        
-        ClassificationControlLayer.shared.gaming = true
     }
+    
+    @objc public static func subcribeMovements(unityBridge : EvomounityBridge) {
+        
+        ClassificationControlLayer.shared.gaming = false
+        
+          let unityBridge: EvomounityBridge = EvomounityBridge()
+          
+          ClassificationControlLayer.shared.movementHandler = { movement in
+              // Send movement to unity
+              
+            unityBridge.sendMovement(JSON(movement.serializeCompact()).rawString())
+          }
+      }
     
     @objc public static func startEvomo(deviceOrientation: String, classificationModel: String) {
         

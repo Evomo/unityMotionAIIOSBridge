@@ -1,9 +1,9 @@
 PODS:
   - Alamofire (4.9.1)
-  - AWSCore (2.13.4)
-  - AWSS3 (2.13.4):
-    - AWSCore (= 2.13.4)
-  - EvomoMotionAI/Basic (1.6.3):
+  - AWSCore (2.16.0)
+  - AWSS3 (2.16.0):
+    - AWSCore (= 2.16.0)
+  - EvomoMotionAI/Basic (1.8.10):
     - Alamofire (~> 4.0)
     - AWSS3
     - MessagePack.swift (~> 3.0.0)
@@ -11,7 +11,7 @@ PODS:
     - PromiseKit/WatchConnectivity (~> 6.1)
     - SwiftyJSON (~> 5.0.0)
     - themis (~> 0.12.2)
-  - EvomoMotionAI/Movesense (1.6.3):
+  - EvomoMotionAI/Movesense (1.8.10):
     - Alamofire (~> 4.0)
     - AWSS3
     - MessagePack.swift (~> 3.0.0)
@@ -67,9 +67,9 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
-  AWSCore: 06beea22b6bdbfe9f5ab5015c6901e8475c746a8
-  AWSS3: ab3965322c8e5ee069eaf9b3201c55557ad21be1
-  EvomoMotionAI: 43286703d42170658131ee448e127816f26c11ca
+  AWSCore: 439de29e3423c637a0c475f9ea329262fd2acc67
+  AWSS3: 6df833615e2b2f8313b585e2090e80a3e97c550f
+  EvomoMotionAI: 9507ae46054b82f19606d017735b9c14eb0b6452
   GRKOpenSSLFramework: 1d65e55d569af7b23074373041a92cc8bc768a92
   MessagePack.swift: 3c5eec2a66cf3c8236cb416abb5d1a8a1b52f5a6
   Movesense: fa71487963344506a226706ecef86bdcb85a4500
