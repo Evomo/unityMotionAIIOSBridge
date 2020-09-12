@@ -15,18 +15,15 @@
 
 typedef void (*ReadyCallback)(void);
 typedef void (*StoppedCallback)(void);
-typedef void (*ElmoCallback)(NSString * data);
 typedef void (*MovementCallback)(NSString * data);
 
 
 - (void) Init: (ReadyCallback) callback licenseID: (NSString *) licenseID debugging: (Boolean) debugging;
 
-- (void) SubscribeElmos: (ElmoCallback) callback;
-
-- (void) SubscribeMovements: (MovementCallback) callback;
+- (void) SubscribeMovements: (MovementCallback) callback gaming: (Boolean) gaming;
 
 - (void) Start: (NSString *) deviceOrientation classificationModel: (NSString *) classificationModel;
-- (void) Stop;
+- (void) Stop: (StoppedCallback) callback;
 // Add callback to stop for uploading debugging data
 
 - (void) LogEvent: (NSString *) eventType note: (NSString *) note;
@@ -41,7 +38,7 @@ typedef void (*MovementCallback)(NSString * data);
 - (void) SetUsername: (NSString *) username;
 
 - (void) Ready;
-- (void) SendElmo: (NSString *) elmoStr;
+
 - (void) SendMovement: (NSString *) movementStr;
 
 @end

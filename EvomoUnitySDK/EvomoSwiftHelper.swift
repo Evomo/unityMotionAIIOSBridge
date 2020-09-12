@@ -26,31 +26,32 @@ import SwiftyJSON
         }
     }
     
-    @objc public static func subcribeElmos(unityBridge : EvomounityBridge) {
-        
-        ClassificationControlLayer.shared.gaming = true
+    @objc public static func subcribeMovements(unityBridge : EvomounityBridge, gaming: Bool = true) {
         
         let unityBridge: EvomounityBridge = EvomounityBridge()
         
-        ClassificationControlLayer.shared.elementalMovementHandler = { elementalMovement in
-            // Send elmo to unity
+        ClassificationControlLayer.shared.gaming = gaming
+        
+        if gaming {
             
-            unityBridge.sendElmo(JSON(elementalMovement.serializeCompact()).rawString())
+            ClassificationControlLayer.shared.elementalMovementHandler = { elementalMovement in
+                // Send elmo to unity
+                
+                unityBridge.sendMovement(
+                    JSON(["elmo": elementalMovement.serializeCompact()]).rawString()
+                )
+            }
+            
+        } else {
+            ClassificationControlLayer.shared.movementHandler = { movement in
+                // Send movement to unity
+                
+                unityBridge.sendMovement(
+                    JSON(["movement": movement.serializeCompact()]).rawString()
+                )
+            }
         }
     }
-    
-    @objc public static func subcribeMovements(unityBridge : EvomounityBridge) {
-        
-        ClassificationControlLayer.shared.gaming = false
-        
-          let unityBridge: EvomounityBridge = EvomounityBridge()
-          
-          ClassificationControlLayer.shared.movementHandler = { movement in
-              // Send movement to unity
-              
-            unityBridge.sendMovement(JSON(movement.serializeCompact()).rawString())
-          }
-      }
     
     @objc public static func startEvomo(deviceOrientation: String, classificationModel: String) {
         
@@ -67,7 +68,6 @@ import SwiftyJSON
             devOrientation = .buttonDown
             print("Warning: Conversion of device orientation \(deviceOrientation) failed! Set to default of buttonDown")
         }
-        
         
         // Define device
         let deviceIphone = Device(deviceID: "", deviceType: .iPhone, devicePosition: .hand,
