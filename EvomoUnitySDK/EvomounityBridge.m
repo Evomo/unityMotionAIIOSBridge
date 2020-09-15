@@ -16,20 +16,15 @@
 
 @implementation EvomounityBridge
 
-static ReadyCallback _readyCallback;
-static StoppedCallback _stoppedCallback;
-static MovementCallback _movementCallback;
+static UnityCallback _callback;
 
-- (void) Init: (NSString *) licenseID debugging: (Boolean) debugging {
-    [EvomoSwiftHelper initEvomoWithUnityBridge:self licenseID:licenseID debugging:debugging];
+- (void) Init: (UnityCallback) callback licenseID: (NSString *) licenseID debugging: (Boolean) debugging {
+    _callback = callback;
+    [EvomoSwiftHelper initEvomoWithLicenseID:licenseID debugging:debugging];
 }
 
-- (void) SubscribeMovements:(MovementCallback)callback gaming: (Boolean) gaming {
-    [EvomoSwiftHelper subcribeMovementsWithUnityBridge:self gaming: gaming];
-}
-
-- (void) Start: (NSString *) deviceOrientation classificationModel: (NSString *) classificationModel {
-    [EvomoSwiftHelper startEvomoWithDeviceOrientation:deviceOrientation classificationModel:classificationModel];
+- (void) Start: (NSString *) deviceOrientation classificationModel: (NSString *) classificationModel gaming: (Boolean) gaming {
+    [EvomoSwiftHelper startEvomoWithUnityBridge:self deviceOrientation:deviceOrientation classificationModel: classificationModel gaming:gaming];
 }
 
 - (void) LogEvent: (NSString *)eventType note: (NSString *)note {
@@ -59,16 +54,8 @@ static MovementCallback _movementCallback;
   [EvomoSwiftHelper stopEvomo];
 }
 
-- (void) SendReadySiganl {
-    _readyCallback();
-}
-
-- (void) SendStoppedSignal {
-    _stoppedCallback();
-}
-
-- (void) SendMovement: (NSString *) movementStr {
-    _movementCallback(movementStr);
+- (void) SendMessage: (NSString *) message {
+    _callback(message);
 }
 
 @end

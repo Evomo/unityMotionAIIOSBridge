@@ -14,7 +14,14 @@ import SwiftyJSON
 
 @objc public class EvomoSwiftHelper: NSObject {
         
-    @objc public static func initEvomo(unityBridge : EvomounityBridge, licenseID: String, debugging: Bool = true) {
+    enum MessageStatusCode:Int {
+        case started = 0
+        case connected = 1
+        case stopped = 2
+        case error = 3
+    }
+    
+    @objc public static func initEvomo(licenseID: String, debugging: Bool = true) {
         
         // set licenseID
         ClassificationControlLayer.shared.setLicense(licenseID: licenseID)
@@ -25,11 +32,13 @@ import SwiftyJSON
             ClassificationControlLayer.shared.setupLogging(logLevel: .debug)
         }
     }
-    
-    @objc public static func subcribeMovements(unityBridge : EvomounityBridge, gaming: Bool = true) {
         
-        let unityBridge: EvomounityBridge = EvomounityBridge()
+    @objc public static func startEvomo(unityBridge: EvomounityBridge,
+                                        deviceOrientation: String,
+                                        classificationModel: String,
+                                        gaming: Bool = true) {
         
+        // Subscribe movements
         ClassificationControlLayer.shared.gaming = gaming
         
         if gaming {
@@ -37,8 +46,8 @@ import SwiftyJSON
             ClassificationControlLayer.shared.elementalMovementHandler = { elementalMovement in
                 // Send elmo to unity
                 
-                unityBridge.sendMovement(
-                    JSON(["elmo": elementalMovement.serializeCompact()]).rawString()
+                unityBridge.sendMessage(
+                    JSON(["device_id": elementalMovement.device.ident, "elmo": elementalMovement.serializeCompact()]).rawString()
                 )
             }
             
@@ -46,14 +55,11 @@ import SwiftyJSON
             ClassificationControlLayer.shared.movementHandler = { movement in
                 // Send movement to unity
                 
-                unityBridge.sendMovement(
-                    JSON(["movement": movement.serializeCompact()]).rawString()
+                unityBridge.sendMessage(
+                    JSON(["device_id": movement.elmos.first!.device.ident, "movement": movement.serializeCompact()]).rawString()
                 )
             }
         }
-    }
-    
-    @objc public static func startEvomo(deviceOrientation: String, classificationModel: String) {
         
         // Convert deviceOrientation string to enum
         let devOrientation: DeviceOrientation
@@ -77,16 +83,44 @@ import SwiftyJSON
         ClassificationControlLayer.shared.start(
             devices: [deviceIphone],
             licenseID: nil,
-            isStarted: {
-                print("Evomo - Started!")
+            isConnected: {
+                unityBridge.sendMessage(
+                    JSON(["device_id": "gobal",
+                          "message": ["status_code": MessageStatusCode.connected.rawValue]]).rawString()
+                )
+        }, isStarted: {
+            unityBridge.sendMessage(
+                JSON(["device_id": "gobal",
+                      "message": ["status_code": MessageStatusCode.started.rawValue]]).rawString()
+            )
+            
+        },isFailed: {error in
                 
-        },
-            isFailed: {error in print("Evomo - startClassification:  \(error)")}
-        )
+                unityBridge.sendMessage(
+                    JSON(["device_id": "gobal",
+                          "message": ["status_code": MessageStatusCode.error.rawValue,
+                                      "data": error]]).rawString()
+                )
+                print("Evomo - startClassification:  \(error)")
+                
+        })
     }
     
     @objc public static func stopEvomo() {
-        _ = ClassificationControlLayer.shared.stop()
+        let unityBridge: EvomounityBridge = EvomounityBridge()
+        
+        ClassificationControlLayer.shared.stop().done { _ in
+            unityBridge.sendMessage(
+                JSON(["device_id": "gobal",
+                      "message": ["status_code": MessageStatusCode.stopped.rawValue]]).rawString()
+            )
+        }.catch { error in
+            unityBridge.sendMessage(
+                JSON(["device_id": "gobal",
+                      "message": ["status_code": MessageStatusCode.error.rawValue,
+                                  "data": error]]).rawString()
+            )
+        }
     }
     
     @objc public static func logEvent(eventType: String, note: String?) {

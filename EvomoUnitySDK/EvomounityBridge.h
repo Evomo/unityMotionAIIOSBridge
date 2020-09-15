@@ -13,18 +13,14 @@
 
 @interface EvomounityBridge : NSObject
 
-typedef void (*ReadyCallback)(void);
-typedef void (*StoppedCallback)(void);
-typedef void (*MovementCallback)(NSString * data);
+typedef void (*UnityCallback)(NSString * data);
 
 
-- (void) Init: (ReadyCallback) callback licenseID: (NSString *) licenseID debugging: (Boolean) debugging;
+- (void) Init: (UnityCallback) callback licenseID: (NSString *) licenseID debugging: (Boolean) debugging;
 
-- (void) SubscribeMovements: (MovementCallback) callback gaming: (Boolean) gaming;
+- (void) Start: (NSString *) deviceOrientation classificationModel: (NSString *) classificationModel gaming: (Boolean) gaming;
 
-- (void) Start: (NSString *) deviceOrientation classificationModel: (NSString *) classificationModel;
-- (void) Stop: (StoppedCallback) callback;
-// Add callback to stop for uploading debugging data
+- (void) Stop;
 
 - (void) LogEvent: (NSString *) eventType note: (NSString *) note;
 
@@ -37,9 +33,7 @@ typedef void (*MovementCallback)(NSString * data);
 
 - (void) SetUsername: (NSString *) username;
 
-- (void) Ready;
-
-- (void) SendMovement: (NSString *) movementStr;
+- (void) SendMessage: (NSString *) message;
 
 @end
 #endif /* EvomounityBridge_h */
