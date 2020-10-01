@@ -7,17 +7,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "ED1E804B-D0F9-4D7F-8283-CE8F75086B4D"
-            shouldBeEnabled = "Yes"
+            uuid = "8BA9FC48-00D9-483F-8B66-799A19102C67"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EvomoUnitySDK/EvomoSwiftHelper.swift"
+            filePath = "EvomoUnitySDK/EvomounityBridge.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "-LogTargetMovement:note:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "460207B7-7C53-4D4E-829E-9AA81A93F146"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EvomoUnitySDK/EvomounityBridge.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "-SendMessage:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

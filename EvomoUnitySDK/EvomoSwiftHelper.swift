@@ -47,7 +47,7 @@ import SwiftyJSON
                 // Send elmo to unity
                 
                 unityBridge.sendMessage(
-                    JSON(["device_id": elementalMovement.device.ident, "elmo": elementalMovement.serializeCompact()]).rawString()
+                    JSON(["deviceID": elementalMovement.device.ident, "elmo": elementalMovement.serializeCompact()]).rawString()
                 )
             }
             
@@ -56,7 +56,7 @@ import SwiftyJSON
                 // Send movement to unity
                 
                 unityBridge.sendMessage(
-                    JSON(["device_id": movement.elmos.first!.device.ident, "movement": movement.serializeCompact()]).rawString()
+                    JSON(["deviceID": movement.elmos.first!.device.ident, "movement": movement.serializeCompact()]).rawString()
                 )
             }
         }
@@ -85,20 +85,20 @@ import SwiftyJSON
             licenseID: nil,
             isConnected: {
                 unityBridge.sendMessage(
-                    JSON(["device_id": "gobal",
-                          "message": ["status_code": MessageStatusCode.connected.rawValue]]).rawString()
+                    JSON(["deviceID": "gobal",
+                          "message": ["statusCode": MessageStatusCode.connected.rawValue]]).rawString()
                 )
         }, isStarted: {
             unityBridge.sendMessage(
-                JSON(["device_id": "gobal",
-                      "message": ["status_code": MessageStatusCode.started.rawValue]]).rawString()
+                JSON(["deviceID": "gobal",
+                      "message": ["statusCode": MessageStatusCode.started.rawValue]]).rawString()
             )
             
-        },isFailed: {error in
+        },isFailed: { error in
                 
                 unityBridge.sendMessage(
-                    JSON(["device_id": "gobal",
-                          "message": ["status_code": MessageStatusCode.error.rawValue,
+                    JSON(["deviceID": "gobal",
+                          "message": ["statusCode": MessageStatusCode.error.rawValue,
                                       "data": error]]).rawString()
                 )
                 print("Evomo - startClassification:  \(error)")
@@ -111,13 +111,13 @@ import SwiftyJSON
         
         ClassificationControlLayer.shared.stop().done { _ in
             unityBridge.sendMessage(
-                JSON(["device_id": "gobal",
-                      "message": ["status_code": MessageStatusCode.stopped.rawValue]]).rawString()
+                JSON(["deviceID": "gobal",
+                      "message": ["statusCode": MessageStatusCode.stopped.rawValue]]).rawString()
             )
         }.catch { error in
             unityBridge.sendMessage(
-                JSON(["device_id": "gobal",
-                      "message": ["status_code": MessageStatusCode.error.rawValue,
+                JSON(["deviceID": "gobal",
+                      "message": ["statusCode": MessageStatusCode.error.rawValue,
                                   "data": error]]).rawString()
             )
         }
