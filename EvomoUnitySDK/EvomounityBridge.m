@@ -54,8 +54,8 @@ static UnityCallback _callback;
   [EvomoSwiftHelper stopEvomo];
 }
 
-- (void) SendMessage: (NSString *) message {
-    _callback(message);
+- (void) SendMessage: (const char *) message {
+    _callback((@"%s", message));
 }
 
 @end

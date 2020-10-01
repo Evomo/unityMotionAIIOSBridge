@@ -13,7 +13,7 @@
 
 @interface EvomounityBridge : NSObject
 
-typedef void (*UnityCallback)(NSString * data);
+typedef void (*UnityCallback)(const char *);
 
 
 - (void) Init: (UnityCallback) callback licenseID: (NSString *) licenseID debugging: (Boolean) debugging;
@@ -33,7 +33,7 @@ typedef void (*UnityCallback)(NSString * data);
 
 - (void) SetUsername: (NSString *) username;
 
-- (void) SendMessage: (NSString *) message;
+- (void) SendMessage: (const char *) message;
 
 @end
 #endif /* EvomounityBridge_h */
