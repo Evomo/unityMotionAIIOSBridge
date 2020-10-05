@@ -46,9 +46,11 @@ import SwiftyJSON
             ClassificationControlLayer.shared.elementalMovementHandler = { elementalMovement in
                 // Send elmo to unity
                 
-                unityBridge.sendMessage(
-                    JSON(["deviceID": elementalMovement.device.ident, "elmo": elementalMovement.serializeCompact()]).rawString()
-                )
+                if elementalMovement.typeLabel != "unknown" {
+                    unityBridge.sendMessage(
+                        JSON(["deviceID": elementalMovement.device.ident, "elmo": elementalMovement.serializeCompact()]).rawString()
+                    )
+                }
             }
             
         } else {
