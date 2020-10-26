@@ -43,13 +43,21 @@ import SwiftyJSON
         
         if gaming {
             
+            if cModel == "" {
+                cModel = "subway-surfer"
+            }
+            
             ClassificationControlLayer.shared.elementalMovementHandler = { elementalMovement in
                 // Send elmo to unity
+                print("EvomoUnityBridge: Elmo \(elementalMovement.typeLabel) \(elementalMovement.rejected)")
                 
                 if elementalMovement.typeLabel != "unknown" {
-                    unityBridge.sendMessage(
-                        JSON(["deviceID": elementalMovement.device.ident, "elmo": elementalMovement.serializeCompact()]).rawString()
-                    )
+                    // Convert elmo name (because of changes in the backend)
+                    var jsonStr: String = JSON(["deviceID": elementalMovement.device.ident, "elmo": elementalMovement.serializeCompact()]).rawString()!
+                    
+                    jsonStr = jsonStr.replacingOccurrences(of: "duck down", with: "duck_down")
+                        .replacingOccurrences(of: "hop_group_up", with: "hop_single_up")
+                    unityBridge.sendMessage(jsonStr)
                 }
             }
             
