@@ -41,6 +41,8 @@ import SwiftyJSON
         // Subscribe movements
         ClassificationControlLayer.shared.gaming = gaming
         
+        var cModel = classificationModel
+        
         if gaming {
             
             if cModel == "" {
