@@ -15,7 +15,6 @@
 
 typedef void (*UnityCallback)(const char *);
 
-
 - (void) Init: (UnityCallback) callback licenseID: (NSString *) licenseID debugging: (Boolean) debugging;
 
 - (void) Start: (NSString *) deviceOrientation classificationModel: (NSString *) classificationModel gaming: (Boolean) gaming;
@@ -34,6 +33,8 @@ typedef void (*UnityCallback)(const char *);
 - (void) SetUsername: (NSString *) username;
 
 - (void) SendMessage: (const char *) message;
+
+- (void) SendGameHubMessage: (NSString *) message;
 
 @end
 #endif /* EvomounityBridge_h */

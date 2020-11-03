@@ -13,7 +13,7 @@ import SwiftyJSON
 //let licenseID = "800ff7ea-521b-4d5f-b1f9-c04e90d665fa"
 
 @objc public class EvomoSwiftHelper: NSObject {
-        
+            
     enum MessageStatusCode:Int {
         case started = 0
         case connected = 1
@@ -168,5 +168,12 @@ import SwiftyJSON
         ClassificationControlLayer.shared.setUsername(username)
     }
     
+    @objc public static func sendUnityMessage(_ message: String) {
+        
+//        send message from unit to client (such as gamehub)
+        if let messageHandler = ClassificationControlLayer.shared.unityToNativeMessageHandler {
+            messageHandler(message)
+        }
+    }
     
 }

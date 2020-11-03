@@ -16,6 +16,8 @@
 
 @implementation EvomounityBridge
 
+//static UnityCallback _unityCallback;
+
 static UnityCallback _callback;
 
 - (void) Init: (UnityCallback) callback licenseID: (NSString *) licenseID debugging: (Boolean) debugging {
@@ -56,6 +58,11 @@ static UnityCallback _callback;
 
 - (void) SendMessage: (const char *) message {
     _callback((@"%s", message));
+}
+
+- (void) SendGameHubMessage: (NSString *) message {
+    [EvomoSwiftHelper sendUnityMessage: message];
+    
 }
 
 @end
