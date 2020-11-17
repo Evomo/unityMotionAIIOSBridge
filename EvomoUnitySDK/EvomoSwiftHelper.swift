@@ -51,7 +51,6 @@ import SwiftyJSON
             
             ClassificationControlLayer.shared.elementalMovementHandler = { elementalMovement in
                 // Send elmo to unity
-                print("EvomoUnityBridge: Elmo \(elementalMovement.typeLabel) \(elementalMovement.rejected)")
                 
                 if elementalMovement.typeLabel != "unknown" {
                     // Convert elmo name (because of changes in the backend)
@@ -84,12 +83,14 @@ import SwiftyJSON
             devOrientation = .buttonDown
         default:
             devOrientation = .buttonDown
-            print("Warning: Conversion of device orientation \(deviceOrientation) failed! Set to default of buttonDown")
+            print("EvomoUnityBridge - Warning: Conversion of device orientation \(deviceOrientation) failed! Set to default of buttonDown")
         }
         
         // Define device
         let deviceIphone = Device(deviceID: "", deviceType: .iPhone, devicePosition: .hand,
-                                  deviceOrientation: devOrientation, classificationModel: classificationModel)
+                                  deviceOrientation: devOrientation, classificationModel: cModel)
+        
+        print("EvomoUnityBridge: Start with config - orientation: \(deviceOrientation), model: \(cModel)")
         
         // Start
         ClassificationControlLayer.shared.start(
@@ -113,7 +114,7 @@ import SwiftyJSON
                           "message": ["statusCode": MessageStatusCode.error.rawValue,
                                       "data": error]]).rawString()
                 )
-                print("Evomo - startClassification:  \(error)")
+                print("EvomoUnityBridge - startClassificationError:  \(error)")
                 
         })
     }
