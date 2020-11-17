@@ -53,11 +53,13 @@ import SwiftyJSON
                 // Send elmo to unity
                 
                 if elementalMovement.typeLabel != "unknown" {
-                    // Convert elmo name (because of changes in the backend)
+                    // Convert elmo name (because of changes in the django_backend)
                     var jsonStr: String = JSON(["deviceID": elementalMovement.device.ident, "elmo": elementalMovement.serializeCompact()]).rawString()!
                     
                     jsonStr = jsonStr.replacingOccurrences(of: "duck down", with: "duck_down")
+                        .replacingOccurrences(of: "duck up", with: "duck_up")
                         .replacingOccurrences(of: "hop_group_up", with: "hop_single_up")
+                        .replacingOccurrences(of: "hop_group_down", with: "hop_single_down")
                     unityBridge.sendMessage(jsonStr)
                 }
             }
