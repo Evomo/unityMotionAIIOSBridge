@@ -26,8 +26,10 @@ import SwiftyJSON
         // set licenseID
         ClassificationControlLayer.shared.setLicense(licenseID: licenseID)
         
+        // TODO: replace this static property with a unity controlled property
+        ClassificationControlLayer.shared.debugging = false
+        
         // optional input: debugging
-        ClassificationControlLayer.shared.debugging = debugging
         if debugging {
             ClassificationControlLayer.shared.setupLogging(logLevel: .debug)
         }
