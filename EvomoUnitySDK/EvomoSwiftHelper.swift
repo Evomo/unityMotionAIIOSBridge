@@ -124,21 +124,26 @@ import SwiftyJSON
     }
     
     @objc public static func stopEvomo() {
-        let unityBridge: EvomounityBridge = EvomounityBridge()
+//        let unityBridge: EvomounityBridge = EvomounityBridge()
         
+        // TODO: Unity messages deactivated because of problems in gamehub usage
+        // Could be solved in unity plugin by waiting on Destroy for stop message
         ClassificationControlLayer.shared.stop().done { _ in
-            unityBridge.sendMessage(
-                JSON(["deviceID": "gobal",
-                      "message": ["statusCode": MessageStatusCode.stopped.rawValue]]).rawString()
-            )
+//            unityBridge.sendMessage(
+//                JSON(["deviceID": "gobal",
+//                      "message": ["statusCode": MessageStatusCode.stopped.rawValue]]).rawString()
+//            )
+            print("Unity-Bridge: stopped")
         }.catch { error in
-            unityBridge.sendMessage(
-                JSON(["deviceID": "gobal",
-                      "message": ["statusCode": MessageStatusCode.error.rawValue,
-                                  "data": error]]).rawString()
-            )
+            print("Unity-Bridge: Error \(error)")
+//            unityBridge.sendMessage(
+//                JSON(["deviceID": "gobal",
+//                      "message": ["statusCode": MessageStatusCode.error.rawValue,
+//                                  "data": error]]).rawString()
+//            )
         }
     }
+
     
     @objc public static func logEvent(eventType: String, note: String?) {
         ClassificationControlLayer.shared.logEvent(eventType: eventType, note: eventType)
