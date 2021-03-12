@@ -10,6 +10,8 @@
 		312CC8AC2497929D001344CA /* EvomoUnitySDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312CC8AB2497929D001344CA /* EvomoUnitySDKTests.swift */; };
 		312CC8AE2497929D001344CA /* EvomoUnitySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BDA921E244F4CEC002A0382 /* EvomoUnitySDK.framework */; platformFilter = ios; };
 		312CC8B4249792EE001344CA /* EvomoSwiftHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDA9229244F4D0C002A0382 /* EvomoSwiftHelper.swift */; };
+		3143D59D25FBD591008D0332 /* Podfile.lock in Resources */ = {isa = PBXBuildFile; fileRef = 3143D59C25FBD591008D0332 /* Podfile.lock */; };
+		3143D59E25FBD591008D0332 /* Podfile.lock in Resources */ = {isa = PBXBuildFile; fileRef = 3143D59C25FBD591008D0332 /* Podfile.lock */; };
 		3163291E246CBBA200FFAFC1 /* EvomoMotionAI.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BDA9236244F9551002A0382 /* EvomoMotionAI.xcframework */; };
 		31632922246CBBA200FFAFC1 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 31E91B74245D8A0A004FD02C /* Podfile */; };
 		31632923246CBBA200FFAFC1 /* EvomoUnitySDK.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 31E91B72245CC604004FD02C /* EvomoUnitySDK.podspec */; };
@@ -45,13 +47,13 @@
 		312CC8A92497929D001344CA /* EvomoUnitySDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EvomoUnitySDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		312CC8AB2497929D001344CA /* EvomoUnitySDKTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvomoUnitySDKTests.swift; sourceTree = "<group>"; };
 		312CC8AD2497929D001344CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3143D59C25FBD591008D0332 /* Podfile.lock */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile.lock; sourceTree = "<group>"; };
 		3163290B246CB1CF00FFAFC1 /* EvomoSwiftHelperMovesense.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvomoSwiftHelperMovesense.swift; sourceTree = "<group>"; };
 		3163290C246CB1CF00FFAFC1 /* EvomoUnitySDKMovesense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvomoUnitySDKMovesense.h; sourceTree = "<group>"; };
 		3163290D246CB1CF00FFAFC1 /* EvomounityBridgeMovesense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvomounityBridgeMovesense.h; sourceTree = "<group>"; };
 		3163290E246CB1CF00FFAFC1 /* EvomounityBridgeMovesense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EvomounityBridgeMovesense.m; sourceTree = "<group>"; };
 		31632913246CBA8E00FFAFC1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31632927246CBBA200FFAFC1 /* EvomoUnitySDKMovesense.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EvomoUnitySDKMovesense.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		31632928246CBBA200FFAFC1 /* EvomoUnitySDK copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "EvomoUnitySDK copy-Info.plist"; path = "/Users/jakobwowy/evomo/unity/iosBridge/EvomoUnitySDK/EvomoUnitySDK copy-Info.plist"; sourceTree = "<absolute>"; };
 		31E91B72245CC604004FD02C /* EvomoUnitySDK.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; fileEncoding = 4; path = EvomoUnitySDK.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		31E91B74245D8A0A004FD02C /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		31E91B76245D8AE6004FD02C /* build-script.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "build-script.sh"; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 		9BDA9214244F4CEC002A0382 = {
 			isa = PBXGroup;
 			children = (
+				3143D59C25FBD591008D0332 /* Podfile.lock */,
 				31E91B77245DDB6A004FD02C /* BuildScripts */,
 				31E91B74245D8A0A004FD02C /* Podfile */,
 				31E91B72245CC604004FD02C /* EvomoUnitySDK.podspec */,
@@ -163,7 +166,6 @@
 				9BDA921F244F4CEC002A0382 /* Products */,
 				55BD13E094859EFB48BAF578 /* Pods */,
 				40A267E08722B0C512025379 /* Frameworks */,
-				31632928246CBBA200FFAFC1 /* EvomoUnitySDK copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -320,6 +322,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3143D59E25FBD591008D0332 /* Podfile.lock in Resources */,
 				31632922246CBBA200FFAFC1 /* Podfile in Resources */,
 				31632923246CBBA200FFAFC1 /* EvomoUnitySDK.podspec in Resources */,
 			);
@@ -329,6 +332,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3143D59D25FBD591008D0332 /* Podfile.lock in Resources */,
 				31E91B75245D8A0A004FD02C /* Podfile in Resources */,
 				31E91B73245CC604004FD02C /* EvomoUnitySDK.podspec in Resources */,
 			);

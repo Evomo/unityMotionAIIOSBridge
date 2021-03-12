@@ -10,8 +10,6 @@ import Foundation
 import EvomoMotionAI
 import SwiftyJSON
 
-//let licenseID = "800ff7ea-521b-4d5f-b1f9-c04e90d665fa"
-
 @objc public class EvomoSwiftHelper: NSObject {
             
     enum MessageStatusCode:Int {

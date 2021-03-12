@@ -1,9 +1,9 @@
 PODS:
   - Alamofire (4.9.1)
-  - AWSCore (2.18.0)
-  - AWSS3 (2.18.0):
-    - AWSCore (= 2.18.0)
-  - EvomoMotionAI/Basic (1.8.13):
+  - AWSCore (2.23.1)
+  - AWSS3 (2.23.1):
+    - AWSCore (= 2.23.1)
+  - EvomoMotionAI/Basic (1.8.14):
     - Alamofire (~> 4.0)
     - AWSS3
     - MessagePack.swift (~> 3.0.0)
@@ -11,9 +11,10 @@ PODS:
     - PromiseKit/WatchConnectivity (~> 6.1)
     - SwiftyJSON (~> 5.0.0)
     - themis (~> 0.12.2)
-  - EvomoMotionAI/Movesense (1.8.13):
+  - EvomoMotionAI/Movesense (1.8.14):
     - Alamofire (~> 4.0)
     - AWSS3
+    - EvomoMotionAI/Basic
     - MessagePack.swift (~> 3.0.0)
     - Movesense
     - PromiseKit (~> 6.1)
@@ -48,12 +49,11 @@ PODS:
     - themis/themis-openssl/core
 
 DEPENDENCIES:
-  - EvomoMotionAI/Basic
-  - EvomoMotionAI/Movesense
+  - EvomoMotionAI/Basic (from `~/evomo/swift/frameworks/evomomotionaiframework`)
+  - EvomoMotionAI/Movesense (from `~/evomo/swift/frameworks/evomomotionaiframework`)
 
 SPEC REPOS:
-  https://bitbucket.org/evomo/evomopodsrelease:
-    - EvomoMotionAI
+  https://bitbucket.org/evomo/evomopodsrelease.git:
     - Movesense
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
@@ -65,11 +65,15 @@ SPEC REPOS:
     - SwiftyJSON
     - themis
 
+EXTERNAL SOURCES:
+  EvomoMotionAI:
+    :path: "~/evomo/swift/frameworks/evomomotionaiframework"
+
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
-  AWSCore: e8cc7fd06efa211328942cc7c9f6dddbe889a115
-  AWSS3: 31b24341477f8eaae01542900e2253e908eed1ee
-  EvomoMotionAI: 380baeb3af04a822f97ff1e20d32488c61dbf781
+  AWSCore: 48bf561f5fb3616ef42c1f7f3eeb4b502d11f69d
+  AWSS3: 66bf4071639d0bebaec10e7b6587712df5f05a26
+  EvomoMotionAI: 37700232f806abf56d257b603f36955af225fbbb
   GRKOpenSSLFramework: 1d65e55d569af7b23074373041a92cc8bc768a92
   MessagePack.swift: 3c5eec2a66cf3c8236cb416abb5d1a8a1b52f5a6
   Movesense: fa71487963344506a226706ecef86bdcb85a4500
@@ -77,6 +81,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   themis: f4ef6d942670146ad08dca8cc99a34ae040878c0
 
-PODFILE CHECKSUM: 3c32058841506e1bb81fe6edbc52ca28814bbdac
+PODFILE CHECKSUM: 92039be1173d2c6e2792ee6bf3eb1632d5b01bad
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.10.1

@@ -18,38 +18,49 @@
 
 static UnityCallback _callback;
 
-- (void) Init: (UnityCallback) callback {
+- (void) Init: (UnityCallback) callback licenseID: (NSString *) licenseID debugging: (Boolean) debugging {
     _callback = callback;
-  [EvomoSwiftHelperMovesense initEvomoWithUnityBridge:self];
-    [self Ready];
+    [EvomoSwiftHelperMovesense initEvomoWithLicenseID:licenseID debugging:debugging];
 }
 
-- (void) Start {
-  [EvomoSwiftHelperMovesense startEvomo];
+- (void) Start: (NSString *) deviceOrientation classificationModel: (NSString *) classificationModel gaming: (Boolean) gaming {
+    [EvomoSwiftHelperMovesense startEvomoWithUnityBridge:self deviceOrientation:deviceOrientation classificationModel: classificationModel gaming:gaming];
+}
+
+- (void) LogEvent: (NSString *)eventType note: (NSString *)note {
+    [EvomoSwiftHelperMovesense logEventWithEventType:eventType note:note];
+}
+
+- (void) LogTargetMovement: (NSString *)movementType  note: (NSString *)note {
+    [EvomoSwiftHelperMovesense logTargetMovementWithMovementType:movementType note:note];
+}
+
+- (void) LogFailure: (NSString *) source
+        failureType: (NSString *) failureType
+       movementType: (NSString *) movementType
+               note: (NSString *) note {
+    
+    [EvomoSwiftHelperMovesense logFailureWithSource:source
+                               failureType:failureType
+                              movementType:movementType
+                                      note:note];
+}
+
+- (void) SetUsername: (NSString *) username {
+    [EvomoSwiftHelperMovesense setUsername:username];
 }
 
 - (void) Stop {
   [EvomoSwiftHelperMovesense stopEvomo];
 }
 
-- (void) Ready {
-    _callback(0);
+- (void) SendMessage: (const char *) message {
+    _callback((@"%s", message));
 }
 
-- (void) Jump {
-    _callback(1);
-}
-
-- (void) Duck {
-    _callback(2);
-}
-
-- (void) Left {
-    _callback(3);
-}
-
-- (void) Right {
-    _callback(4);
+- (void) SendGameHubMessage: (NSString *) message {
+    [EvomoSwiftHelperMovesense sendUnityMessage: message];
+    
 }
 
 @end

@@ -8,83 +8,180 @@
 
 import Foundation
 import EvomoMotionAIMovesense
-
-let deviceIphone = Device(deviceID: "", deviceType: .iPhone, devicePosition: .hand,
-                          deviceOrientation: .buttonDown, classificationModel: "2115")
-
-let licenseID = "800ff7ea-521b-4d5f-b1f9-c04e90d665fa"
+import SwiftyJSON
 
 @objc public class EvomoSwiftHelperMovesense: NSObject {
     
-    @objc public static func initEvomo(unityBridge : EvomounityBridgeMovesense) {
+    enum MessageStatusCode:Int {
+        case started = 0
+        case connected = 1
+        case stopped = 2
+        case error = 3
+    }
+    
+    @objc public static func initEvomo(licenseID: String, debugging: Bool = true) {
         
-        let unityBridge: EvomounityBridgeMovesense = EvomounityBridgeMovesense()
+        // set licenseID
+        ClassificationControlLayerMovesenseMovesense.shared.setLicense(licenseID: licenseID)
         
-        var lastElmo: ElementalMovement? = nil
+        // TODO: replace this static property with a unity controlled property
+        ClassificationControlLayerMovesense.shared.debugging = false
         
-        ClassificationControlLayerMovesense.shared.elementalMovementHandler = { elementalMovement in
-            // Will be executed every time a elementalMovement was classified
+        // optional input: debugging
+        if debugging {
+            ClassificationControlLayerMovesense.shared.setupLogging(logLevel: .debug)
+        }
+    }
+        
+    @objc public static func startEvomo(unityBridge: EvomounityBridgeMovesense,
+                                        deviceOrientation: String,
+                                        classificationModel: String,
+                                        gaming: Bool = true) {
+        
+        // Subscribe movements
+        ClassificationControlLayerMovesense.shared.gaming = gaming
+        
+        var cModel = classificationModel
+        
+        if gaming {
             
-            DispatchQueue.main.async {
-                // execute movement event in main thread
-                if !elementalMovement.rejected {
-//                    print("EvomoMovement: \(elementalMovement.typeLabel)")
+            if cModel == "" {
+                cModel = "subway-surfer"
+            }
+            
+            ClassificationControlLayerMovesense.shared.elementalMovementHandler = { elementalMovement in
+                // Send elmo to unity
+                
+                if elementalMovement.typeLabel != "unknown" {
+                    // Convert elmo name (because of changes in the django_backend)
+                    var jsonStr: String = JSON(["deviceID": elementalMovement.device.ident, "elmo": elementalMovement.serializeCompact()]).rawString()!
                     
-                    switch(elementalMovement.typeLabel) {
-                    case "hop_single_up":
-                        unityBridge.jump()
-                    case "duck down":
-                        unityBridge.duck()
-                    case "side_step_left_up":
-                        unityBridge.left()
-                    case "side_step_right_up":
-                        unityBridge.right()
-                    default:
-                        print("default")
-                    }
-                    
-                    // rescue rejected elmo
-                    if let lastElmo = lastElmo {
-                        if lastElmo.rejected == true && elementalMovement.rejected == false {
-                            if lastElmo.typeLabel == "duck down" && elementalMovement.typeLabel == "duck up"  {
-                                // rescue hop
-                                unityBridge.duck()
-                            } else if lastElmo.typeLabel == "hop_single_up" && elementalMovement.typeLabel == "hop_single_down"  {
-                                // rescue hop
-                                unityBridge.jump()
-                            } else if lastElmo.typeLabel == "side_step_left_up" && elementalMovement.typeLabel == "side_step_left_down"  {
-                                // rescue hop
-                                unityBridge.left()
-                            } else if lastElmo.typeLabel == "side_step_right_up" && elementalMovement.typeLabel == "side_step_right_down"  {
-                                // rescue hop
-                                unityBridge.right()
-                            }
-                        }
-                    }
+                    jsonStr = jsonStr.replacingOccurrences(of: "duck down", with: "duck_down")
+                        .replacingOccurrences(of: "duck up", with: "duck_up")
+                        .replacingOccurrences(of: "hop_group_up", with: "hop_single_up")
+                        .replacingOccurrences(of: "hop_group_down", with: "hop_single_down")
+                    unityBridge.sendMessage(jsonStr)
                 }
             }
-            lastElmo = elementalMovement
-        }
-        
-        
-        ClassificationControlLayerMovesense.shared.debugging = true
-        ClassificationControlLayerMovesense.shared.gaming = true
+            
+        } else {
+            ClassificationControlLayerMovesense.shared.movementHandler = { movement in
+                // Send movement to unity
                 
-    }
-
-    
-    
-    @objc public static func startEvomo() {
-        // Define device
-
-        ClassificationControlLayerMovesense.shared.startWithMovesense(licenseID: licenseID) { result in
-            print("Start classification", result)
+                unityBridge.sendMessage(
+                    JSON(["deviceID": movement.elmos.first!.device.ident, "movement": movement.serializeCompact()]).rawString()
+                )
+            }
         }
+        
+        // Convert deviceOrientation string to enum
+        let devOrientation: DeviceOrientation
+        switch deviceOrientation {
+        case "buttonRight":
+            devOrientation = .buttonRight
+        case "buttonLeft":
+            devOrientation = .buttonLeft
+        case "buttonDown":
+            devOrientation = .buttonDown
+        default:
+            devOrientation = .buttonDown
+            print("EvomoUnityBridge - Warning: Conversion of device orientation \(deviceOrientation) failed! Set to default of buttonDown")
+        }
+        
+        // Define device
+        let deviceMovesense = Device(deviceID: "", deviceType: .movesense, devicePosition: .chest,
+                                     deviceOrientation: devOrientation, classificationModel: cModel)
+        
+        print("EvomoUnityBridge: Start with config - orientation: \(deviceOrientation), model: \(cModel)")
+        
+        // Start
+        ClassificationControlLayerMovesense.shared.startWithMovesense(device: deviceMovesense, issConnected: { result in
+            print("Start classification", result)
+        },
+        isConnected: {
+            unityBridge.sendMessage(
+                JSON(["deviceID": "gobal",
+                      "message": ["statusCode": MessageStatusCode.connected.rawValue]]).rawString()
+            )
+        }, isStarted: {
+            unityBridge.sendMessage(
+                JSON(["deviceID": "gobal",
+                      "message": ["statusCode": MessageStatusCode.started.rawValue]]).rawString()
+            )
+            
+        },isFailed: { error in
+            
+            unityBridge.sendMessage(
+                JSON(["deviceID": "gobal",
+                      "message": ["statusCode": MessageStatusCode.error.rawValue,
+                                  "data": error]]).rawString()
+            )
+            print("EvomoUnityBridge - startClassificationError:  \(error)")
+            
+        })
         
     }
     
     @objc public static func stopEvomo() {
-        ClassificationControlLayerMovesense.shared.stop()
+//        let unityBridge: EvomounityBridge = EvomounityBridge()
+        
+        // TODO: Unity messages deactivated because of problems in gamehub usage
+        // Could be solved in unity plugin by waiting on Destroy for stop message
+        ClassificationControlLayerMovesense.shared.stop().done { _ in
+//            unityBridge.sendMessage(
+//                JSON(["deviceID": "gobal",
+//                      "message": ["statusCode": MessageStatusCode.stopped.rawValue]]).rawString()
+//            )
+            print("Unity-Bridge: stopped")
+        }.catch { error in
+            print("Unity-Bridge: Error \(error)")
+//            unityBridge.sendMessage(
+//                JSON(["deviceID": "gobal",
+//                      "message": ["statusCode": MessageStatusCode.error.rawValue,
+//                                  "data": error]]).rawString()
+//            )
+        }
+    }
+
+    
+    @objc public static func logEvent(eventType: String, note: String?) {
+        ClassificationControlLayerMovesense.shared.logEvent(eventType: eventType, note: eventType)
+    }
+    
+    @objc public static func logTargetMovement(movementType: String, note: String?) {
+        ClassificationControlLayerMovesense.shared.logTargetMovement(movementType: movementType, note: nil)
+    }
+    
+    @objc public static func logFailure(source: String, failureType: String, movementType: String, note: String?) {
+        
+        let sourceEnum: FailureSource
+        switch source {
+        case "app":
+            sourceEnum = .app
+        default:
+            sourceEnum = .manual
+        }
+        
+        let failureTypeEnum: FailureType
+        switch failureType {
+        case "toLess":
+            failureTypeEnum = .toLess
+        default:
+            failureTypeEnum = .toMuch
+        }
+        
+        ClassificationControlLayerMovesense.shared.logFailure(source: sourceEnum, failureType: failureTypeEnum, movementType: movementType, note: note)
+    }
+    
+    @objc public static func setUsername(_ username: String) {
+        ClassificationControlLayerMovesense.shared.setUsername(username)
+    }
+    
+    @objc public static func sendUnityMessage(_ message: String) {
+        
+//        send message from unit to client (such as gamehub)
+        if let messageHandler = ClassificationControlLayerMovesense.shared.unityToNativeMessageHandler {
+            messageHandler(message)
+        }
     }
 }
-

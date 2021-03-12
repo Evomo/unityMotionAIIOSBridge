@@ -13,20 +13,28 @@
 
 @interface EvomounityBridgeMovesense : NSObject
 
-typedef void (*UnityCallback)(int data);
+typedef void (*UnityCallback)(const char *);
 
-- (void) Init: (UnityCallback) callback;
+- (void) Init: (UnityCallback) callback licenseID: (NSString *) licenseID debugging: (Boolean) debugging;
 
-- (void) Start;
+- (void) Start: (NSString *) deviceOrientation classificationModel: (NSString *) classificationModel gaming: (Boolean) gaming;
 
 - (void) Stop;
 
+- (void) LogEvent: (NSString *) eventType note: (NSString *) note;
 
-- (void) Ready;
-- (void) Jump;
-- (void) Duck;
-- (void) Left;
-- (void) Right;
+- (void) LogTargetMovement: (NSString *) eventType note: (NSString *) note;
+
+- (void) LogFailure: (NSString *) source
+        failureType: (NSString *) failureType
+       movementType: (NSString *) movementType
+               note: (NSString *) note;
+
+- (void) SetUsername: (NSString *) username;
+
+- (void) SendMessage: (const char *) message;
+
+- (void) SendGameHubMessage: (NSString *) message;
 
 @end
 #endif /* EvomounityBridgeMovesense_h */
