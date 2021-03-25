@@ -23,8 +23,8 @@ static UnityCallback _callback;
     [EvomoSwiftHelperMovesense initEvomoWithLicenseID:licenseID debugging:debugging];
 }
 
-- (void) Start: (NSString *) deviceOrientation classificationModel: (NSString *) classificationModel gaming: (Boolean) gaming {
-    [EvomoSwiftHelperMovesense startEvomoWithUnityBridge:self deviceOrientation:deviceOrientation classificationModel: classificationModel gaming:gaming];
+- (void) Start: (NSString *) deviceOrientation deviceType (NSString *) deviceType classificationModel: (NSString *) classificationModel gaming: (Boolean) gaming, licenseID: (NSString *) licenseID  {
+    [EvomoSwiftHelperMovesense startEvomoWithUnityBridge:self deviceOrientation:deviceOrientation deviceType:deviceType classificationModel: classificationModel gaming:gaming licenseID: licenseID];
 }
 
 - (void) LogEvent: (NSString *)eventType note: (NSString *)note {
