@@ -6,8 +6,8 @@
 //  Copyright © 2020 richardelms. All rights reserved.
 //
 #import <Foundation/Foundation.h>
-#if __has_include("EvomoUnitySDKMovesense-Swift.h")
-    #import "EvomoUnitySDKMovesense-Swift.h"
+#if __has_include("EvomoUnitySDK-Swift.h")
+    #import "EvomoUnitySDK-Swift.h"
 #else
     #import <EvomoUnitySDKMovesense/EvomoUnitySDKMovesense-Swift.h>
 #endif
@@ -37,7 +37,7 @@ static UnityCallback _callback;
 
 - (void) LogFailure: (NSString *) source
         failureType: (NSString *) failureType
-       movementType: (NSString *) movementType
+       movementType: (NSString *) movementTypeco
                note: (NSString *) note {
     
     [EvomoSwiftHelperMovesense logFailureWithSource:source

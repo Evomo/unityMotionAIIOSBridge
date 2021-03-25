@@ -57,6 +57,7 @@
 		31E91B72245CC604004FD02C /* EvomoUnitySDK.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; fileEncoding = 4; path = EvomoUnitySDK.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		31E91B74245D8A0A004FD02C /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		31E91B76245D8AE6004FD02C /* build-script.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "build-script.sh"; sourceTree = "<group>"; };
+		31EB75C2260B747F00AF8865 /* Movesense.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Movesense.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5845EC1788B901A5236E0B15 /* Pods-EvomoUnitySDKMovesense.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EvomoUnitySDKMovesense.release.xcconfig"; path = "Target Support Files/Pods-EvomoUnitySDKMovesense/Pods-EvomoUnitySDKMovesense.release.xcconfig"; sourceTree = "<group>"; };
 		669F3F5DC577BCB57584D635 /* Pods-EvomoUnitySDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EvomoUnitySDK.release.xcconfig"; path = "Target Support Files/Pods-EvomoUnitySDK/Pods-EvomoUnitySDK.release.xcconfig"; sourceTree = "<group>"; };
 		9BDA921E244F4CEC002A0382 /* EvomoUnitySDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EvomoUnitySDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,6 +136,7 @@
 		40A267E08722B0C512025379 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				31EB75C2260B747F00AF8865 /* Movesense.framework */,
 				9BDA9236244F9551002A0382 /* EvomoMotionAI.xcframework */,
 				E32C7A1BE321A6AF37FD53BF /* Pods_EvomoUnitySDKMovesense.framework */,
 				105E4B99608CB9CE4B10E258 /* Pods_EvomoUnitySDK.framework */,

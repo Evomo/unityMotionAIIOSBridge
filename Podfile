@@ -11,14 +11,16 @@ target 'EvomoUnitySDK' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 	
-  pod "EvomoMotionAI/Basic", :path => '~/evomo/swift/frameworks/evomomotionaiframework'
+  pod "EvomoMotionAI/Basic", '1.8.13'
+  #, :path => '~/evomo/swift/frameworks/evomomotionaiframework'
 end
 
 target 'EvomoUnitySDKMovesense' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
   
-  pod "EvomoMotionAI/Movesense", :path => '~/evomo/swift/frameworks/evomomotionaiframework'
+  pod "EvomoMotionAI/Movesense", '1.8.13'
+  #, :path => '~/evomo/swift/frameworks/evomomotionaiframework'
 
 end
 
@@ -35,9 +37,8 @@ post_install do |installer|
   
   installer.pods_project.targets.each do |target|
     
-    
     # find the right target
-    if target.name == 'Pods-EvomoUnitySDKMovesense' || target.name == 'EvomoUnitySDKMovesense'|| target.name == 'Pods-TestApp'
+    if target.name == 'Pods-EvomoUnitySDKMovesense'|| target.name == 'Pods-TestApp' || target.name == 'EvomoMotionAI-Basic-Movesense'
       print "Add movesense lib\n"
       # add libmds.a file to build files
       build_phase = target.frameworks_build_phase

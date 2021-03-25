@@ -1,9 +1,9 @@
 PODS:
   - Alamofire (4.9.1)
-  - AWSCore (2.23.1)
-  - AWSS3 (2.23.1):
-    - AWSCore (= 2.23.1)
-  - EvomoMotionAI/Basic (1.8.14):
+  - AWSCore (2.23.2)
+  - AWSS3 (2.23.2):
+    - AWSCore (= 2.23.2)
+  - EvomoMotionAI/Basic (1.8.13):
     - Alamofire (~> 4.0)
     - AWSS3
     - MessagePack.swift (~> 3.0.0)
@@ -11,10 +11,9 @@ PODS:
     - PromiseKit/WatchConnectivity (~> 6.1)
     - SwiftyJSON (~> 5.0.0)
     - themis (~> 0.12.2)
-  - EvomoMotionAI/Movesense (1.8.14):
+  - EvomoMotionAI/Movesense (1.8.13):
     - Alamofire (~> 4.0)
     - AWSS3
-    - EvomoMotionAI/Basic
     - MessagePack.swift (~> 3.0.0)
     - Movesense
     - PromiseKit (~> 6.1)
@@ -49,11 +48,12 @@ PODS:
     - themis/themis-openssl/core
 
 DEPENDENCIES:
-  - EvomoMotionAI/Basic (from `~/evomo/swift/frameworks/evomomotionaiframework`)
-  - EvomoMotionAI/Movesense (from `~/evomo/swift/frameworks/evomomotionaiframework`)
+  - EvomoMotionAI/Basic (= 1.8.13)
+  - EvomoMotionAI/Movesense (= 1.8.13)
 
 SPEC REPOS:
-  https://bitbucket.org/evomo/evomopodsrelease.git:
+  https://bitbucket.org/evomo/evomopodsrelease:
+    - EvomoMotionAI
     - Movesense
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
@@ -65,15 +65,11 @@ SPEC REPOS:
     - SwiftyJSON
     - themis
 
-EXTERNAL SOURCES:
-  EvomoMotionAI:
-    :path: "~/evomo/swift/frameworks/evomomotionaiframework"
-
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
-  AWSCore: 48bf561f5fb3616ef42c1f7f3eeb4b502d11f69d
-  AWSS3: 66bf4071639d0bebaec10e7b6587712df5f05a26
-  EvomoMotionAI: 37700232f806abf56d257b603f36955af225fbbb
+  AWSCore: 70f79e95ee30f8eefa7122391d76ace516778f22
+  AWSS3: f307717d61880b0470e1f152d3f48a8239ae96cb
+  EvomoMotionAI: 380baeb3af04a822f97ff1e20d32488c61dbf781
   GRKOpenSSLFramework: 1d65e55d569af7b23074373041a92cc8bc768a92
   MessagePack.swift: 3c5eec2a66cf3c8236cb416abb5d1a8a1b52f5a6
   Movesense: fa71487963344506a226706ecef86bdcb85a4500
@@ -81,6 +77,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   themis: f4ef6d942670146ad08dca8cc99a34ae040878c0
 
-PODFILE CHECKSUM: 92039be1173d2c6e2792ee6bf3eb1632d5b01bad
+PODFILE CHECKSUM: 8eea962749e4314b5cc76185dd3b935a81b80681
 
 COCOAPODS: 1.10.1

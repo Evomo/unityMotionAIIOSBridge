@@ -22,7 +22,7 @@ import SwiftyJSON
     @objc public static func initEvomo(licenseID: String, debugging: Bool = true) {
         
         // set licenseID
-        ClassificationControlLayerMovesenseMovesense.shared.setLicense(licenseID: licenseID)
+        ClassificationControlLayerMovesense.shared.setLicense(licenseID: licenseID)
         
         // TODO: replace this static property with a unity controlled property
         ClassificationControlLayerMovesense.shared.debugging = false
@@ -95,29 +95,14 @@ import SwiftyJSON
         print("EvomoUnityBridge: Start with config - orientation: \(deviceOrientation), model: \(cModel)")
         
         // Start
-        ClassificationControlLayerMovesense.shared.startWithMovesense(device: deviceMovesense, issConnected: { result in
+        ClassificationControlLayerMovesense.shared.startWithMovesense(licenseID: "", device: deviceMovesense, scanResult: { result in
             print("Start classification", result)
-        },
-        isConnected: {
             unityBridge.sendMessage(
                 JSON(["deviceID": "gobal",
-                      "message": ["statusCode": MessageStatusCode.connected.rawValue]]).rawString()
+                      "message": ["statusCode": MessageStatusCode.connected.rawValue],
+                      "data": result
+                ]).rawString()
             )
-        }, isStarted: {
-            unityBridge.sendMessage(
-                JSON(["deviceID": "gobal",
-                      "message": ["statusCode": MessageStatusCode.started.rawValue]]).rawString()
-            )
-            
-        },isFailed: { error in
-            
-            unityBridge.sendMessage(
-                JSON(["deviceID": "gobal",
-                      "message": ["statusCode": MessageStatusCode.error.rawValue,
-                                  "data": error]]).rawString()
-            )
-            print("EvomoUnityBridge - startClassificationError:  \(error)")
-            
         })
         
     }
@@ -183,5 +168,6 @@ import SwiftyJSON
         if let messageHandler = ClassificationControlLayerMovesense.shared.unityToNativeMessageHandler {
             messageHandler(message)
         }
+        
     }
 }
