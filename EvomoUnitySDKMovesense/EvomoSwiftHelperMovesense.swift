@@ -35,10 +35,10 @@ import SwiftyJSON
         
     @objc public static func startEvomo(unityBridge: EvomounityBridgeMovesense,
                                         deviceOrientation: String,
-                                        deviceType: String = "Movesense"
+                                        deviceType: String = "Movesense",
                                         classificationModel: String,
                                         gaming: Bool = true,
-                                        licenseID: String?) {
+                                        licenseID: String) {
         
         // Subscribe movements
         ClassificationControlLayerMovesense.shared.gaming = gaming
