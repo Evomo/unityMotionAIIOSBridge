@@ -9,8 +9,16 @@
 #if __has_include("EvomoUnitySDK-Swift.h")
     #import "EvomoUnitySDK-Swift.h"
 #else
-    #import <EvomoUnitySDKMovesense/EvomoUnitySDKMovesense-Swift.h>
+    #import <EvomoUnitySDK/EvomoUnitySDK-Swift.h>
 #endif
+
+
+// in project use
+// #import <EvomoUnitySDKMovesense/EvomoUnitySDKMovesense-Swift.h>
+
+// in distributed sdk use
+// #import <EvomoUnitySDK/EvomoUnitySDK-Swift.h>
+
 #import "EvomounityBridgeMovesense.h"
 
 
