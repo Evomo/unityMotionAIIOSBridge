@@ -11,16 +11,17 @@ target 'EvomoUnitySDK' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 	
-  pod "EvomoMotionAI/Basic", '1.8.13'
-  #, :path => '~/evomo/swift/frameworks/evomomotionaiframework'
+  # pod "EvomoMotionAI/Basic", '1.8.13'
+  pod "EvomoMotionAI/Basic", :path => '~/evomo/swift/frameworks/evomomotionaiframework'
 end
 
 target 'EvomoUnitySDKMovesense' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
   
-  pod "EvomoMotionAI/Movesense", '1.8.13'
-  #, :path => '~/evomo/swift/frameworks/evomomotionaiframework'
+  # pod "EvomoMotionAI/Movesense", '1.8.13'
+  pod "EvomoMotionAI/Basic", :path => '~/evomo/swift/frameworks/evomomotionaiframework'
+end
 
 end
 
