@@ -1,9 +1,9 @@
 PODS:
   - Alamofire (4.9.1)
-  - AWSCore (2.23.2)
-  - AWSS3 (2.23.2):
-    - AWSCore (= 2.23.2)
-  - EvomoMotionAI/Basic (1.8.13):
+  - AWSCore (2.23.3)
+  - AWSS3 (2.23.3):
+    - AWSCore (= 2.23.3)
+  - EvomoMotionAI/Basic (1.8.16):
     - Alamofire (~> 4.0)
     - AWSS3
     - MessagePack.swift (~> 3.0.0)
@@ -11,7 +11,7 @@ PODS:
     - PromiseKit/WatchConnectivity (~> 6.1)
     - SwiftyJSON (~> 5.0.0)
     - themis (~> 0.12.2)
-  - EvomoMotionAI/Movesense (1.8.13):
+  - EvomoMotionAI/Movesense (1.8.16):
     - Alamofire (~> 4.0)
     - AWSS3
     - MessagePack.swift (~> 3.0.0)
@@ -34,7 +34,7 @@ PODS:
     - PromiseKit/CorePromise
   - PromiseKit/WatchConnectivity (6.13.1):
     - PromiseKit/CorePromise
-  - SwiftyJSON (5.0.0)
+  - SwiftyJSON (5.0.1)
   - themis (0.12.2):
     - themis/themis-openssl (= 0.12.2)
   - themis/themis-openssl (0.12.2):
@@ -48,8 +48,8 @@ PODS:
     - themis/themis-openssl/core
 
 DEPENDENCIES:
-  - EvomoMotionAI/Basic (= 1.8.13)
-  - EvomoMotionAI/Movesense (= 1.8.13)
+  - EvomoMotionAI/Basic
+  - EvomoMotionAI/Movesense
 
 SPEC REPOS:
   https://bitbucket.org/evomo/evomopodsrelease:
@@ -67,16 +67,16 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
-  AWSCore: 70f79e95ee30f8eefa7122391d76ace516778f22
-  AWSS3: f307717d61880b0470e1f152d3f48a8239ae96cb
-  EvomoMotionAI: 380baeb3af04a822f97ff1e20d32488c61dbf781
+  AWSCore: c60e635b1a61cb27b6dfff646ce9f402be870b62
+  AWSS3: d8e8a6d7328e7fa1468788c4d7efa71d7f3a6caa
+  EvomoMotionAI: 80aaa0114bc408e9fec0f6028dde8de1a2e4d5a7
   GRKOpenSSLFramework: 1d65e55d569af7b23074373041a92cc8bc768a92
   MessagePack.swift: 3c5eec2a66cf3c8236cb416abb5d1a8a1b52f5a6
   Movesense: fa71487963344506a226706ecef86bdcb85a4500
   PromiseKit: 28fda91c973cc377875d8c0ea4f973013c05b6db
-  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
   themis: f4ef6d942670146ad08dca8cc99a34ae040878c0
 
-PODFILE CHECKSUM: 8eea962749e4314b5cc76185dd3b935a81b80681
+PODFILE CHECKSUM: abc712f36977cb952c3619727ad2146e2f8bf1cb
 
 COCOAPODS: 1.10.1
