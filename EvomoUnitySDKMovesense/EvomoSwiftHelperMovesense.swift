@@ -17,6 +17,8 @@ import SwiftyJSON
         case connected = 1
         case stopped = 2
         case error = 3
+        case movesenseDeviceFound = 4
+        case noMovesenseDevice = 5
     }
     
     @objc public static func initEvomo(licenseID: String, debugging: Bool = true) {
@@ -32,7 +34,26 @@ import SwiftyJSON
             ClassificationControlLayerMovesense.shared.setupLogging(logLevel: .debug)
         }
     }
-        
+    
+    @objc public static func scanForMovesense(unityBridge: EvomounityBridgeMovesense) {
+        ClassificationControlLayerMovesense.shared.scanForMovesense() { deviceIdent in
+            
+            var statusCode: MessageStatusCode = .noMovesenseDevice
+            
+            if let deviceIdent = deviceIdent {
+                print("EvomoUnityBridge - MovesenseDevice found \(deviceIdent)")
+                statusCode = .movesenseDeviceFound
+            }
+            
+            unityBridge.sendMessage(
+                JSON(["deviceID": "gobal",
+                      "message": ["statusCode": statusCode.rawValue,
+                        "data": deviceIdent ?? ""]
+                ]).rawString()
+            )
+        }
+    }
+    
     @objc public static func startEvomo(unityBridge: EvomounityBridgeMovesense,
                                         deviceOrientation: String,
                                         deviceType: String = "Movesense",
@@ -100,8 +121,8 @@ import SwiftyJSON
             print("Start classification", result)
             unityBridge.sendMessage(
                 JSON(["deviceID": "gobal",
-                      "message": ["statusCode": MessageStatusCode.connected.rawValue],
-                      "data": result
+                      "message": ["statusCode": MessageStatusCode.connected.rawValue,
+                      "data": result]
                 ]).rawString()
             )
         })
@@ -109,26 +130,26 @@ import SwiftyJSON
     }
     
     @objc public static func stopEvomo() {
-//        let unityBridge: EvomounityBridge = EvomounityBridge()
+        //        let unityBridge: EvomounityBridge = EvomounityBridge()
         
         // TODO: Unity messages deactivated because of problems in gamehub usage
         // Could be solved in unity plugin by waiting on Destroy for stop message
         ClassificationControlLayerMovesense.shared.stop().done { _ in
-//            unityBridge.sendMessage(
-//                JSON(["deviceID": "gobal",
-//                      "message": ["statusCode": MessageStatusCode.stopped.rawValue]]).rawString()
-//            )
+            //            unityBridge.sendMessage(
+            //                JSON(["deviceID": "gobal",
+            //                      "message": ["statusCode": MessageStatusCode.stopped.rawValue]]).rawString()
+            //            )
             print("Unity-Bridge: stopped")
         }.catch { error in
             print("Unity-Bridge: Error \(error)")
-//            unityBridge.sendMessage(
-//                JSON(["deviceID": "gobal",
-//                      "message": ["statusCode": MessageStatusCode.error.rawValue,
-//                                  "data": error]]).rawString()
-//            )
+            //            unityBridge.sendMessage(
+            //                JSON(["deviceID": "gobal",
+            //                      "message": ["statusCode": MessageStatusCode.error.rawValue,
+            //                                  "data": error]]).rawString()
+            //            )
         }
     }
-
+    
     
     @objc public static func logEvent(eventType: String, note: String?) {
         ClassificationControlLayerMovesense.shared.logEvent(eventType: eventType, note: eventType)
@@ -165,7 +186,7 @@ import SwiftyJSON
     
     @objc public static func sendUnityMessage(_ message: String) {
         
-//        send message from unit to client (such as gamehub)
+        //        send message from unit to client (such as gamehub)
         if let messageHandler = ClassificationControlLayerMovesense.shared.unityToNativeMessageHandler {
             messageHandler(message)
         }

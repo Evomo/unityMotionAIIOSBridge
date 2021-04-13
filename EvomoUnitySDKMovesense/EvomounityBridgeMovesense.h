@@ -17,6 +17,8 @@ typedef void (*UnityCallback)(const char *);
 
 - (void) Init: (UnityCallback) callback licenseID: (NSString *) licenseID debugging: (Boolean) debugging;
 
+- (void) ScanForMovesense;
+
 - (void) Start: (NSString *) deviceOrientation deviceType: (NSString *) deviceType classificationModel: (NSString *) classificationModel gaming: (Boolean) gaming;
 
 - (void) Stop;

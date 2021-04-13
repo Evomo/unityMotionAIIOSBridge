@@ -9,7 +9,7 @@
 #if __has_include("EvomoUnitySDK-Swift.h")
     #import "EvomoUnitySDK-Swift.h"
 #else
-    #import <EvomoUnitySDKMovesense/EvomoUnitySDKMovesense-Swift.h>
+    #import <EvomoUnitySDK/EvomoUnitySDK-Swift.h>
 #endif
 
 
@@ -29,6 +29,10 @@ static UnityCallback _callback;
 - (void) Init: (UnityCallback) callback licenseID: (NSString *) licenseID debugging: (Boolean) debugging {
     _callback = callback;
     [EvomoSwiftHelperMovesense initEvomoWithLicenseID:licenseID debugging:debugging];
+}
+
+- (void) ScanForMovesense {
+    [EvomoSwiftHelperMovesense scanForMovesenseWithUnityBridge:self];
 }
 
 - (void) Start: (NSString *) deviceOrientation deviceType: (NSString *) deviceType classificationModel: (NSString *) classificationModel gaming: (Boolean) gaming {
