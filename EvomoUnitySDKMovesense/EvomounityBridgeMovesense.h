@@ -19,7 +19,7 @@ typedef void (*UnityCallback)(const char *);
 
 - (void) ScanForMovesense;
 
-- (void) Start: (NSString *) deviceOrientation deviceType: (NSString *) deviceType classificationModel: (NSString *) classificationModel gaming: (Boolean) gaming;
+- (void) Start: (NSString *) deviceOrientation deviceType: (NSString *) deviceType deviceId: (NSString *) deviceId classificationModel: (NSString *) classificationModel gaming: (Boolean) gaming;
 
 - (void) Stop;
 

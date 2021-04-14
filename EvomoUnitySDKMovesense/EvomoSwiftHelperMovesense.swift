@@ -57,6 +57,7 @@ import SwiftyJSON
     @objc public static func startEvomo(unityBridge: EvomounityBridgeMovesense,
                                         deviceOrientation: String,
                                         deviceType: String = "Movesense",
+                                        deviceId: String = "",
                                         classificationModel: String,
                                         gaming: Bool = true) {
         
@@ -111,22 +112,20 @@ import SwiftyJSON
         }
         
         // Define device
-        let deviceMovesense = Device(deviceID: "", deviceType: .movesense, devicePosition: .chest,
+        let deviceMovesense = Device(deviceID: deviceId, deviceType: .movesense, devicePosition: .chest,
                                      deviceOrientation: devOrientation, classificationModel: cModel)
         
         print("EvomoUnityBridge: Start with config - orientation: \(deviceOrientation), model: \(cModel)")
         
         // Start
-        ClassificationControlLayerMovesense.shared.startWithMovesense(device: deviceMovesense, scanResult: { result in
-            print("Start classification", result)
+        ClassificationControlLayerMovesense.shared.start(devices: [deviceMovesense], isConnected: {
+            print("MovesenseIsConnected")
             unityBridge.sendMessage(
                 JSON(["deviceID": "gobal",
-                      "message": ["statusCode": MessageStatusCode.connected.rawValue,
-                      "data": result]
+                      "message": ["statusCode": MessageStatusCode.connected.rawValue]
                 ]).rawString()
             )
         })
-        
     }
     
     @objc public static func stopEvomo() {

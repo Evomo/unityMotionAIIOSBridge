@@ -3,7 +3,7 @@
 Pod::Spec.new do |spec|
     
     spec.name         = "EvomoUnitySDK"
-    spec.version      = "3.2.8"
+    spec.version      = "3.2.9"
     spec.summary      = "Unity Bridge for the Evomo MotionAI SDK."
     
     spec.description  = <<-DESC

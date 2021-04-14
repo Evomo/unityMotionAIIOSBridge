@@ -35,6 +35,8 @@ import SwiftyJSON
         
     @objc public static func startEvomo(unityBridge: EvomounityBridge,
                                         deviceOrientation: String,
+                                        deviceType: String = "Movesense",
+                                        deviceId: String = "",
                                         classificationModel: String,
                                         gaming: Bool = true) {
         
@@ -89,7 +91,7 @@ import SwiftyJSON
         }
         
         // Define device
-        let deviceIphone = Device(deviceID: "", deviceType: .iPhone, devicePosition: .hand,
+        let deviceIphone = Device(deviceID: deviceId, deviceType: .iPhone, devicePosition: .hand,
                                   deviceOrientation: devOrientation, classificationModel: cModel)
         
         print("EvomoUnityBridge: Start with config - orientation: \(deviceOrientation), model: \(cModel)")
